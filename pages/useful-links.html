@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="th" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รวมลิงก์และเครื่องมือที่มีประโยชน์ (Useful Links &amp; Resources) | 3D Printing Knowledge Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+      background-color: #0b0f19;
+      color: #e2e8f0;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(51, 65, 85, 0.6);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-cyan-500/30 selection:text-cyan-200">
+  <div id="header-mount"></div>
+
+  <!-- Main Content -->
+  <main class="flex-grow max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    <!-- Breadcrumb & Quick Tab Switcher -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+      <nav class="flex items-center space-x-2 text-xs sm:text-sm text-slate-400">
+        <a href="../index.html" class="hover:text-cyan-400 flex items-center gap-1 transition">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> หน้าแรก
+        </a>
+        <span>/</span>
+        <span class="text-slate-500">อื่น ๆ</span>
+        <span>/</span>
+        <span class="text-cyan-400 font-medium">Useful Link</span>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="../index.html#compare-section" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-xs font-medium transition">
+          <i data-lucide="git-compare" class="w-3.5 h-3.5"></i> เปรียบเทียบสเปก
+        </a>
+        <a href="../data/useful-links.csv" download="useful-links.csv" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium transition">
+          <i data-lucide="download" class="w-3.5 h-3.5 text-cyan-400"></i> ดาวน์โหลด CSV
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero Header -->
+    <div class="glass-card rounded-2xl p-6 sm:p-8 mb-8 relative overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="flex items-start gap-4">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 border border-cyan-500/30 flex items-center justify-center flex-shrink-0 text-cyan-400 shadow-lg shadow-cyan-950/50">
+            <i data-lucide="link" class="w-7 h-7"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2.5 flex-wrap">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 uppercase tracking-wider">
+                อื่น ๆ
+              </span>
+              <span class="text-xs text-slate-400 font-mono">Tab: Useful Link</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-bold text-white mt-1.5">รวมลิงก์และเครื่องมือที่มีประโยชน์ (Useful Links &amp; Resources)</h1>
+            <p class="text-slate-400 text-sm sm:text-base mt-1 max-w-3xl">แหล่งรวมเว็บไซต์ โปรแกรม Slicer, คู่มือตั้งค่า Calibration, ชุมชน 3D Printing และแหล่งดาวน์โหลดโมเดล 3 มิติ</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Stat Cards -->
+      <div id="stats-container" class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6 pt-6 border-t border-slate-800/80">
+      </div>
+    </div>
+
+    <!-- Filter & Search Controls -->
+    <div class="glass-card rounded-2xl p-4 sm:p-5 mb-6">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+        <!-- Search Input -->
+        <div class="md:col-span-4 lg:col-span-5 relative">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+          <input id="search-input" type="text" placeholder="ค้นหาในหมวดนี้ (ชื่อรุ่น, ยี่ห้อ, สเปก...)" 
+            class="w-full pl-10 pr-9 py-2.5 bg-slate-900/90 border border-slate-700/80 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition">
+          <button id="clear-search" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Dynamic Filter Selectors -->
+        <div id="dynamic-filters" class="md:col-span-5 lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+        </div>
+
+        <!-- View Mode & Reset -->
+        <div class="md:col-span-3 lg:col-span-2 flex items-center justify-end gap-2">
+          <div class="inline-flex bg-slate-900 p-1 rounded-xl border border-slate-800">
+            <button id="btn-view-table" class="px-2.5 py-1.5 rounded-lg text-xs font-medium bg-cyan-500/20 text-cyan-300 flex items-center gap-1 transition" title="มุมมองตาราง">
+              <i data-lucide="table" class="w-3.5 h-3.5"></i> ตาราง
+            </button>
+            <button id="btn-view-cards" class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white flex items-center gap-1 transition" title="มุมมองการ์ด">
+              <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i> การ์ด
+            </button>
+          </div>
+          <button id="btn-reset" class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/80 transition" title="ล้างตัวกรองทั้งหมด">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Status & Page Size -->
+      <div class="flex flex-wrap items-center justify-between gap-2 mt-3 pt-3 border-t border-slate-800/60 text-xs text-slate-400">
+        <div>
+          แสดงผล <span id="showing-count" class="text-cyan-400 font-semibold">0</span> จากทั้งหมด <span id="total-count" class="text-white font-semibold">0</span> รายการ
+          <span id="active-filter-badge" class="hidden ml-2 px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">กำลังใช้ตัวกรอง</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span>แสดงหน้าละ:</span>
+          <select id="page-size" class="bg-slate-900 border border-slate-700 rounded-lg px-2 py-1 text-slate-200 focus:outline-none focus:border-cyan-500">
+            <option value="25">25 รายการ</option>
+            <option value="50">50 รายการ</option>
+            <option value="100">100 รายการ</option>
+            <option value="9999">ทั้งหมด</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table View Container -->
+    <div id="table-view-container" class="glass-card rounded-2xl overflow-hidden shadow-2xl">
+      <div class="overflow-x-auto custom-scrollbar">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr id="table-head-row" class="bg-slate-900/95 border-b border-slate-800 text-[11px] font-semibold text-slate-400 uppercase tracking-wider select-none">
+            </tr>
+          </thead>
+          <tbody id="table-body" class="divide-y divide-slate-800/60 text-xs sm:text-sm">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Card Grid View Container -->
+    <div id="cards-view-container" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden glass-card rounded-2xl p-12 text-center my-6">
+      <div class="w-16 h-16 rounded-full bg-slate-800/80 flex items-center justify-center mx-auto mb-4 text-slate-500">
+        <i data-lucide="search-x" class="w-8 h-8"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-white">ไม่พบข้อมูลที่ตรงกับเงื่อนไข</h3>
+      <p class="text-slate-400 text-sm mt-1">ลองเปลี่ยนคำค้นหา หรือกดปุ่มรีเซ็ตตัวกรองเพื่อดูข้อมูลทั้งหมด</p>
+      <button onclick="resetAllFilters()" class="mt-4 px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs transition">
+        ล้างตัวกรองทั้งหมด
+      </button>
+    </div>
+
+    <!-- Pagination -->
+    <div id="pagination-bar" class="flex flex-wrap items-center justify-between gap-4 mt-6 px-2">
+      <div id="page-info" class="text-xs text-slate-400"></div>
+      <div id="page-buttons" class="flex items-center gap-1.5"></div>
+    </div>
+
+  </main>
+
+  <!-- Detail Modal -->
+  <div id="detail-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div class="flex items-center justify-between px-6 py-4 bg-slate-800/70 border-b border-slate-700">
+        <div>
+          <span class="text-[11px] uppercase tracking-wider text-cyan-400 font-semibold">Useful Link Specification</span>
+          <h3 id="modal-title" class="text-lg font-bold text-white mt-0.5">รายละเอียดข้อมูล</h3>
+        </div>
+        <button onclick="closeModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-700 transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div id="modal-body" class="p-6 overflow-y-auto custom-scrollbar space-y-3 text-sm">
+      </div>
+      <div class="px-6 py-3.5 bg-slate-950/70 border-t border-slate-800 flex justify-end gap-2">
+        <button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition">
+          ปิดหน้าต่าง
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-mount"></div>
+
+  <!-- Embedded Data -->
+  <script id="tab-data" type="application/json">{"name": "Useful Link", "slug": "useful-links", "title": "ลิงก์และแหล่งข้อมูลที่เป็นประโยชน์", "headers": ["Category", "Source Name", "Description", "URL"], "total_rows": 55, "data": [{"Category": "Review Websites", "Source Name": "All3DP", "Description": "เว็บไซต์รีวิวและข่าวสารเกี่ยวกับเครื่องพิมพ์ 3 มิติ", "URL": "https://all3dp.com"}, {"Category": "", "Source Name": "3Dprint.com", "Description": "แหล่งรวมข่าวและบทความเกี่ยวกับการพิมพ์ 3 มิติ", "URL": "https://3dprint.com"}, {"Category": "Calculation Tools", "Source Name": "Calistar", "Description": "เครื่องมือสำหรับปรับแก้ความคลาดเคลื่อนเชิงมิติและการบิดเอียงของเครื่องพิมพ์", "URL": "https://github.com/dirtdigger/fleur_de_cali"}, {"Category": "", "Source Name": "Filament Density Calculator", "Description": "เครื่องมือออนไลน์สำหรับคำนวณความหนาแน่นของเส้นพลาสติก (Filament)", "URL": "http://www.cymrusoft.co.uk/filamentdensitycalculator.html"}, {"Category": "", "Source Name": "Filament Length Calculator", "Description": "เครื่องมือออนไลน์สำหรับคำนวณความยาวและน้ำหนักของเส้นพลาสติก", "URL": "https://www.threedoo.com/tutorial/filament-length-calculator"}, {"Category": "", "Source Name": "Filament length to weight", "Description": "เครื่องมือออนไลน์สำหรับคำนวณความยาวและน้ำหนักของเส้นพลาสติก", "URL": "https://jscalc.io/calc/d5QSiH4XwUIiiBmb"}, {"Category": "", "Source Name": "Remaining filament calculator", "Description": "เครื่องมือออนไลน์สำหรับคำนวณความยาวเส้นพลาสติกที่เหลืออยู่", "URL": "https://jscalc.io/calc/1Cj6c1zxnr4q8Tzw"}, {"Category": "", "Source Name": "OnlySpoolz", "Description": "เว็บรวมน้ำหนักแกนม้วนเปล่า", "URL": "https://www.onlyspoolz.com/portfolio/"}, {"Category": "3D Printing Pricing Template", "Source Name": "2000AJM", "Description": "เทมเพลตเก่าเมื่อ 5 ปีที่แล้ว สำหรับคำนวณราคาพิมพ์ 3 มิติ", "URL": "https://docs.google.com/spreadsheets/d/1aoCZQ0xTRgdV73QDzXw3isZI8RETw-cfNLq7TFOTdfg/edit?gid=2016986878#gid=2016986878"}, {"Category": "", "Source Name": "Halvorson.Design", "Description": "เทมเพลตคำนวณราคาพิมพ์ 3 มิติ", "URL": "https://halvorson.design/3d-printing-pricing-template/"}, {"Category": "Filament Calibration", "Source Name": "Creality Wiki", "Description": "บทเรียนการปรับแต่ง (Calibration Tutorial)", "URL": "https://wiki.creality.com/en/software/update-released/Basic-introduction/calibration-tutorial"}, {"Category": "", "Source Name": "Orca Slicer Calibration Suite", "Description": "ตัวช่วยคู่มือการปรับแต่ง (Calibration Guide Helper)", "URL": "https://calibration-tool-ivory.vercel.app/"}, {"Category": "", "Source Name": "BambuLAB wiki", "Description": "การปรับค่า Flow Rate", "URL": "https://wiki.bambulab.com/en/software/bambu-studio/calibration_flow_rate"}, {"Category": "", "Source Name": "OrcaSlicer", "Description": "การปรับแต่งเครื่องพิมพ์ (Calibration)", "URL": "https://github.com/SoftFever/OrcaSlicer/wiki/Calibration"}, {"Category": "", "Source Name": "Filatrack", "Description": "เครื่องมือที่ช่วยบริหารจัดการคลังเส้น Filament", "URL": "https://filatrack.app/app/filament"}, {"Category": "YouTube Channels", "Source Name": "Thomas Sanladerer", "Description": "ช่องรีวิวและเทคนิคการใช้งานเครื่องพิมพ์ 3 มิติอย่างละเอียด", "URL": "https://www.youtube.com/user/ThomasSanladerer"}, {"Category": "", "Source Name": "Maker's Muse", "Description": "ช่องรีวิวและคำแนะนำเกี่ยวกับการใช้งานและออกแบบเครื่องพิมพ์ 3 มิติ", "URL": "https://www.youtube.com/user/TheMakersMuse"}, {"Category": "", "Source Name": "DIY of Things", "Description": "ช่องนำเสนอโปรเจกต์ DIY ด้วยเครื่องพิมพ์ 3 มิติ รวมถึงรีวิวและเทคนิค", "URL": "https://www.youtube.com/@DIYofThings"}, {"Category": "", "Source Name": "MakerStation", "Description": "ช่องเล่าประสบการณ์การเป็น Maker การสร้างโปรเจกต์ และรีวิวเครื่องมือ รวมถึงเครื่องพิมพ์ 3 มิติ", "URL": "https://www.youtube.com/@MakerStation"}, {"Category": "", "Source Name": "3D Printing Nerd", "Description": "ช่องรีวิว ทดลอง และเทคนิคที่เกี่ยวกับการพิมพ์ 3 มิติ", "URL": "https://www.youtube.com/@3DPrintingNerd"}, {"Category": "", "Source Name": "Uncle Jessy", "Description": "ช่องเน้นการพิมพ์ 3 มิติแนวซูเปอร์ฮีโร่ รีวิวเครื่องพิมพ์เรซิน และเทคนิคการพิมพ์", "URL": "https://www.youtube.com/@UncleJessy"}, {"Category": "", "Source Name": "CNC Kitchen", "Description": "ช่องทดสอบและรีวิวอุปกรณ์เสริมเครื่องพิมพ์ 3 มิติ พร้อมข้อมูลเชิงสถิติ", "URL": "https://www.youtube.com/@CNCKitchen"}, {"Category": "", "Source Name": "Make Anything", "Description": "ช่องโชว์ผลงานที่สร้างด้วยเครื่องพิมพ์ 3 มิติ พร้อมรีวิวและเทคนิคการใช้งาน", "URL": "https://www.youtube.com/@MakeAnything"}, {"Category": "Additional Articles", "Source Name": "Siamreprap", "Description": "บทความวิธีเลือกและใช้งานเส้นพลาสติกสำหรับเครื่องพิมพ์ 3 มิติ", "URL": "https://www.siamreprap.com/2020/01/how-to-select-3d-filament-for-3d-printer/"}, {"Category": "", "Source Name": "Siamreprap", "Description": "บทความวิธีเพิ่มความเร็วในการพิมพ์สำหรับเครื่อง FDM", "URL": "https://www.siamreprap.com/2022/08/how-to-increase-print-speed-fdm-3d-printer/"}, {"Category": "", "Source Name": "Sync Innovation", "Description": "คู่มือแก้ปัญหาทั่วไปของเครื่องพิมพ์ FDM 3 มิติ", "URL": "https://www.sync-innovation.com/troubleshooting/problem-fdm-3d-printer/"}, {"Category": "", "Source Name": "Sync Innovation", "Description": "คู่มือแก้ปัญหาทั่วไปของเครื่องพิมพ์ LCD 3 มิติ", "URL": "https://www.sync-innovation.com/troubleshooting/problem-lcd-3d-printer/"}, {"Category": "", "Source Name": "Ultimaker", "Description": "เครื่องมือที่จำเป็นสำหรับมืออาชีพด้านการพิมพ์ 3 มิติ", "URL": "https://ultimaker.com/learn/essential-tools-for-every-3d-printing-professional/"}, {"Category": "", "Source Name": "Sync Innovation", "Description": "12 ปัญหางานพิมพ์เสียของเครื่อง FDM 3D Printer และวิธีแก้ไข", "URL": "https://www.sync-innovation.com/troubleshooting/problem-fdm-3d-printer/"}, {"Category": "", "Source Name": "Sync Innovation", "Description": "12 ปัญหางานพิมพ์เสียของเครื่อง LCD 3D Printer และวิธีแก้ไข", "URL": "https://www.sync-innovation.com/troubleshooting/problem-lcd-3d-printer/"}, {"Category": "", "Source Name": "Creality K1 Series Master Directory", "Description": "รวมอะไหล่+อัพเกรดเครื่องพิมพ์ Creality K series", "URL": "https://docs.google.com/spreadsheets/d/1lo7YX4nkfYGhhncVtIryOvbDM4tTaRjzZT0Y3F5O7gI"}, {"Category": "", "Source Name": "klipper_canbus", "Description": "CANBUS TOOLHEAD INSTALL", "URL": "https://maz0r.github.io/klipper_canbus/"}, {"Category": "เว็บไฟล์โมเดลสามมิติ", "Source Name": "Thingiverse", "Description": "คลังไฟล์โมเดล 3D ฟรีขนาดใหญ่ ใช้งานได้ยาวนาน", "URL": "https://www.thingiverse.com"}, {"Category": "", "Source Name": "Printables (Prusa)", "Description": "ชุมชนแบ่งปันไฟล์ STL/3MF คุณภาพสูงจาก Prusa", "URL": "https://www.printables.com"}, {"Category": "", "Source Name": "MakerWorld (Bambu)", "Description": "แพลตฟอร์มใหม่จาก Bambu Lab เน้นงานใช้งานจริงและโมเดลคุณภาพ", "URL": "https://makerworld.com"}, {"Category": "", "Source Name": "CrealityCloud (Creality)", "Description": "รวมไฟล์โมเดลจากทาง Creality และเครื่องพิมพ์ที่เกี่ยวข้อง", "URL": "https://www.crealitycloud.com/"}, {"Category": "", "Source Name": "MyMiniFactory", "Description": "รวมไฟล์โมเดลจากนักออกแบบมืออาชีพและงานเชิงศิลปะ", "URL": "https://www.myminifactory.com"}, {"Category": "", "Source Name": "Cults3D", "Description": "ตลาดขายไฟล์โมเดล 3D ทั้งฟรีและเสียเงิน", "URL": "https://cults3d.com"}, {"Category": "", "Source Name": "Pinshape", "Description": "คลังไฟล์โมเดลฟรีและพรีเมียม พร้อมรีวิวจากผู้ใช้", "URL": "https://pinshape.com"}, {"Category": "", "Source Name": "Yeggi", "Description": "เว็บค้นหาไฟล์โมเดล 3D จากหลายแหล่งในที่เดียว", "URL": "https://yeggi.com"}, {"Category": "", "Source Name": "STLFinder", "Description": "เสิร์ชเอนจิ้นค้นหาไฟล์ STL จากหลายเว็บไซต์", "URL": "https://www.stlfinder.com"}, {"Category": "", "Source Name": "Thangs", "Description": "แพลตฟอร์มค้นหา+แชร์โมเดล 3D มีระบบวิเคราะห์โมเดล", "URL": "https://thangs.com"}, {"Category": "", "Source Name": "GrabCAD", "Description": "คลัง CAD files สำหรับงานวิศวกรรม/อุตสาหกรรม", "URL": "https://grabcad.com"}, {"Category": "", "Source Name": "Free3D", "Description": "เว็บไซต์รวมไฟล์ 3D หลากหลาย format", "URL": "https://free3d.com"}, {"Category": "", "Source Name": "CGTrader", "Description": "ตลาดซื้อขายไฟล์โมเดล 3D ทั้งงาน print และงาน 3D graphics", "URL": "https://www.cgtrader.com"}, {"Category": "เว็บไฟล์โมเดลสามมิติ     (สายโมเดล)", "Source Name": "Sketchfab", "Description": "เว็บรวมโมเดล 3D หลากหลาย ทั้งฟรีและขาย มี preview แบบ 3D viewer", "URL": "https://sketchfab.com"}, {"Category": "", "Source Name": "TurboSquid", "Description": "Marketplace ขายโมเดล 3D คุณภาพสูง สำหรับงานเกม/อนิเมชัน", "URL": "https://www.turbosquid.com"}, {"Category": "", "Source Name": "CGTrader", "Description": "ตลาดซื้อขายโมเดล 3D ทั้งสายงาน render และพิมพ์สามมิติ", "URL": "https://www.cgtrader.com"}, {"Category": "", "Source Name": "Free3D", "Description": "โมเดลฟรีหลากหลาย format เหมาะกับ Blender, Maya, 3ds Max", "URL": "https://free3d.com"}, {"Category": "", "Source Name": "Blend Swap", "Description": "ชุมชนแชร์ไฟล์ .blend สำหรับ Blender ฟรีทั้งหมด", "URL": "https://www.blendswap.com"}, {"Category": "", "Source Name": "Clara.io", "Description": "Online 3D editor + library โมเดลฟรี", "URL": "https://clara.io"}, {"Category": "", "Source Name": "OpenGameArt", "Description": "ฐานข้อมูล asset ฟรีสำหรับเกม ทั้ง 2D/3D/เสียง", "URL": "https://opengameart.org"}, {"Category": "", "Source Name": "3DExport", "Description": "ตลาดขายโมเดล 3D (เกม, animation, printing)", "URL": "https://3dexport.com"}, {"Category": "", "Source Name": "Hum3D", "Description": "โมเดลเชิงพาณิชย์คุณภาพสูง เช่น รถ, มือถือ, ของใช้", "URL": "https://hum3d.com"}, {"Category": "", "Source Name": "KitBash3D", "Description": "รวม asset ชุดใหญ่สำหรับทำฉาก/สถาปัตยกรรม เหมาะกับสาย concept art", "URL": "https://kitbash3d.com"}]}</script>
+  <script id="meta-data" type="application/json">{"slug": "useful-links", "name": "Useful Link", "title": "รวมลิงก์และเครื่องมือที่มีประโยชน์ (Useful Links & Resources)", "subtitle": "แหล่งรวมเว็บไซต์ โปรแกรม Slicer, คู่มือตั้งค่า Calibration, ชุมชน 3D Printing และแหล่งดาวน์โหลดโมเดล 3 มิติ", "icon": "link", "category": "อื่น ๆ", "accent": "teal", "filter_cols": ["Category"], "primary_cols": ["Category", "Source Name", "Description", "URL"]}</script>
+  <script src="../assets/common.js"></script>
+  <script>
+    const TAB_DATA = JSON.parse(document.getElementById('tab-data').textContent);
+    const META = JSON.parse(document.getElementById('meta-data').textContent);
+
+    renderWikiHeader(META.slug, false);
+
+    const allRows = TAB_DATA.data || [];
+    const allHeaders = TAB_DATA.headers || [];
+    const displayCols = (META.primary_cols && META.primary_cols.length > 0)
+      ? META.primary_cols.filter(c => allHeaders.includes(c))
+      : allHeaders.slice(0, 10);
+
+    // State
+    let searchQuery = '';
+    let activeFilters = {};
+    let sortCol = null;
+    let sortAsc = true;
+    let currentPage = 1;
+    let pageSize = 25;
+    let viewMode = 'table'; // 'table' | 'cards'
+    let filteredRows = [...allRows];
+
+    // Helper: parse number from string
+    function parseNum(val) {
+      if (val === null || val === undefined) return NaN;
+      const s = String(val).replace(/,/g, '').trim();
+      const m = s.match(/-?\d+(\.\d+)?/);
+      return m ? parseFloat(m[0]) : NaN;
+    }
+
+    // Build Stat Cards
+    function buildStats() {
+      const container = document.getElementById('stats-container');
+      const total = allRows.length;
+      
+      // Find first brand/seller/manufacturer column
+      const brandCol = ['Seller', 'Brand', 'Manufacturer', 'Material', 'Category', 'Stepper Motor Driver'].find(c => allHeaders.includes(c)) || allHeaders[0];
+      const uniqueBrands = new Set(allRows.map(r => (r[brandCol] || '').trim()).filter(Boolean)).size;
+
+      // Find price or numeric column
+      const priceCol = allHeaders.find(h => /price|thb/i.test(h));
+      let thirdStatLabel = 'คอลัมน์ข้อมูล (Specs)';
+      let thirdStatVal = allHeaders.length + ' รายการ';
+      if (priceCol) {
+        const prices = allRows.map(r => parseNum(r[priceCol])).filter(n => !isNaN(n) && n > 0);
+        if (prices.length > 0) {
+          const minP = Math.min(...prices).toLocaleString();
+          const maxP = Math.max(...prices).toLocaleString();
+          thirdStatLabel = 'ช่วงราคาโดยประมาณ (THB)';
+          thirdStatVal = `฿${minP} - ฿${maxP}`;
+        }
+      }
+
+      const typeCol = ['Motion Type', 'Technology Type', 'Materials Type', 'Interface', 'Size (NEMA)', 'Print Difficulty', 'Firmware'].find(c => allHeaders.includes(c));
+      let fourthLabel = 'สถานะฐานข้อมูล';
+      let fourthVal = 'อัปเดตล่าสุด 2026';
+      if (typeCol) {
+        const uniqueTypes = new Set(allRows.map(r => (r[typeCol] || '').trim()).filter(Boolean)).size;
+        fourthLabel = `ประเภท (${typeCol})`;
+        fourthVal = `${uniqueTypes} รูปแบบ`;
+      }
+
+      const stats = [
+        { label: 'จำนวนรายการทั้งหมด', val: total.toLocaleString() + ' รายการ', icon: 'database', color: 'text-cyan-400' },
+        { label: `จำนวน ${brandCol || 'กลุ่ม'}`, val: uniqueBrands.toLocaleString() + ' แบรนด์/ชนิด', icon: 'tag', color: 'text-indigo-400' },
+        { label: thirdStatLabel, val: thirdStatVal, icon: 'bar-chart-3', color: 'text-emerald-400' },
+        { label: fourthLabel, val: fourthVal, icon: 'sparkles', color: 'text-amber-400' }
+      ];
+
+      container.innerHTML = stats.map(s => `
+        <div class="bg-slate-900/70 border border-slate-800/90 rounded-xl p-3.5 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center ${s.color} flex-shrink-0">
+            <i data-lucide="${s.icon}" class="w-5 h-5"></i>
+          </div>
+          <div class="min-w-0">
+            <p class="text-[11px] text-slate-400 truncate">${s.label}</p>
+            <p class="text-sm sm:text-base font-bold text-white truncate">${s.val}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Build Filter Dropdowns
+    function buildFilters() {
+      const filterContainer = document.getElementById('dynamic-filters');
+      const cols = (META.filter_cols || []).filter(c => allHeaders.includes(c)).slice(0, 3);
+      
+      filterContainer.innerHTML = cols.map((col, idx) => {
+        const vals = Array.from(new Set(allRows.map(r => (r[col] || '').trim()).filter(Boolean))).sort();
+        return `
+          <select data-filter-col="${col.replace(/"/g, '&quot;')}" class="filter-select w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-3 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 transition truncate">
+            <option value="">ทั้งหมด: ${col}</option>
+            ${vals.map(v => `<option value="${v.replace(/"/g, '&quot;')}">${v}</option>`).join('')}
+          </select>
+        `;
+      }).join('');
+
+      document.querySelectorAll('.filter-select').forEach(sel => {
+        sel.addEventListener('change', (e) => {
+          const col = e.target.getAttribute('data-filter-col');
+          activeFilters[col] = e.target.value;
+          currentPage = 1;
+          applyFiltersAndRender();
+        });
+      });
+    }
+
+    // Format cell value with smart badges
+    function formatCell(col, val) {
+      if (val === undefined || val === null || String(val).trim() === '' || val === '-') {
+        return '<span class="text-slate-600">-</span>';
+      }
+      const str = String(val).trim();
+
+      // URLs
+      if (/^https?:\/\//i.test(str)) {
+        return `<a href="${str}" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 text-xs font-medium transition">
+          <span>เปิดลิงก์</span> <i data-lucide="external-link" class="w-3 h-3"></i>
+        </a>`;
+      }
+
+      // Boolean / Yes-No
+      if (/^(yes|true|✔|✓|1)$/i.test(str) && /enclosed|touch|verified|cut|open|support|wifi|usb|sd|can|stealth|spread|cool|stall|1kg|2kg|3kg/i.test(col)) {
+        return '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">✔ รองรับ</span>';
+      }
+      if (/^(no|false|✘|✗|0)$/i.test(str) && /enclosed|touch|verified|cut|open|support|wifi|usb|sd|can|stealth|spread|cool|stall|1kg|2kg|3kg/i.test(col)) {
+        return '<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-800 text-slate-400">ไม่รองรับ</span>';
+      }
+
+      // Difficulty / Resistance badges
+      if (/^(easy|low)$/i.test(str)) {
+        return `<span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">${str}</span>`;
+      }
+      if (/^(medium)$/i.test(str)) {
+        return `<span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-500/15 text-amber-300 border border-amber-500/30">${str}</span>`;
+      }
+      if (/^(hard|high)$/i.test(str)) {
+        return `<span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-rose-500/15 text-rose-300 border border-rose-500/30">${str}</span>`;
+      }
+
+      // Motion Type / Tech Type pill
+      if (/motion type|technology type|materials type|interface/i.test(col)) {
+        return `<span class="px-2.5 py-0.5 rounded-lg text-xs font-medium bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 whitespace-nowrap">${str}</span>`;
+      }
+
+      // Price formatting
+      if (/price|thb/i.test(col)) {
+        const n = parseFloat(str.replace(/,/g, ''));
+        if (!isNaN(n) && /^\d+(\.\d+)?$/.test(str.replace(/,/g, ''))) {
+          return `<span class="font-semibold text-emerald-400 whitespace-nowrap">฿${n.toLocaleString()}</span>`;
+        }
+        return `<span class="font-medium text-emerald-400">${str}</span>`;
+      }
+
+      // Visual bar for Filament Properties temperatures & tensile strength
+      if (META.slug === 'filament-properties' && /temp|strength/i.test(col)) {
+        const n = parseNum(str);
+        const maxVal = /strength/i.test(col) ? 130 : 360;
+        if (!isNaN(n) && n > 0) {
+          const pct = Math.min(100, Math.max(8, Math.round((n / maxVal) * 100)));
+          const barColor = /strength/i.test(col) ? 'bg-rose-500' : 'bg-cyan-500';
+          return `
+            <div class="min-w-[90px]">
+              <div class="flex justify-between text-xs mb-1"><span class="font-semibold text-white">${str}</span></div>
+              <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                <div class="${barColor} h-full rounded-full" style="width:${pct}%"></div>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      if (str.length > 65) {
+        return `<span title="${str.replace(/"/g, '&quot;')}" class="line-clamp-2 max-w-xs">${str}</span>`;
+      }
+      return str;
+    }
+
+    // Render Table Header
+    function renderTableHeader() {
+      const tr = document.getElementById('table-head-row');
+      tr.innerHTML = displayCols.map(col => {
+        const isSorted = sortCol === col;
+        const icon = isSorted ? (sortAsc ? 'arrow-up' : 'arrow-down') : 'arrow-up-down';
+        const activeClass = isSorted ? 'text-cyan-400 bg-slate-800/60' : 'hover:text-slate-200 hover:bg-slate-800/40';
+        return `
+          <th onclick="handleSort('${col.replace(/'/g, "\\'")}')" class="px-4 py-3.5 cursor-pointer transition whitespace-nowrap ${activeClass}">
+            <div class="flex items-center gap-1.5">
+              <span>${col}</span>
+              <i data-lucide="${icon}" class="w-3.5 h-3.5 ${isSorted ? 'text-cyan-400' : 'text-slate-600'}"></i>
+            </div>
+          </th>
+        `;
+      }).join('') + `<th class="px-4 py-3.5 text-right whitespace-nowrap">รายละเอียด</th>`;
+    }
+
+    window.handleSort = function(col) {
+      if (sortCol === col) {
+        sortAsc = !sortAsc;
+      } else {
+        sortCol = col;
+        sortAsc = true;
+      }
+      applyFiltersAndRender();
+    };
+
+    function applyFiltersAndRender() {
+      const q = searchQuery.toLowerCase().trim();
+      filteredRows = allRows.filter(row => {
+        // Check dropdown filters
+        for (const [col, val] of Object.entries(activeFilters)) {
+          if (val && String(row[col] || '').trim() !== val) return false;
+        }
+        // Check search query
+        if (!q) return true;
+        return Object.values(row).some(v => String(v || '').toLowerCase().includes(q));
+      });
+
+      // Check active filter badge
+      const hasFilter = q !== '' || Object.values(activeFilters).some(Boolean);
+      document.getElementById('active-filter-badge').classList.toggle('hidden', !hasFilter);
+
+      // Sort
+      if (sortCol) {
+        filteredRows.sort((a, b) => {
+          const va = a[sortCol] ?? '';
+          const vb = b[sortCol] ?? '';
+          const na = parseNum(va);
+          const nb = parseNum(vb);
+          if (!isNaN(na) && !isNaN(nb)) {
+            return sortAsc ? na - nb : nb - na;
+          }
+          return sortAsc
+            ? String(va).localeCompare(String(vb), 'th')
+            : String(vb).localeCompare(String(va), 'th');
+        });
+      }
+
+      // Counts
+      document.getElementById('total-count').textContent = allRows.length.toLocaleString();
+      document.getElementById('showing-count').textContent = filteredRows.length.toLocaleString();
+
+      // Empty state
+      const isEmpty = filteredRows.length === 0;
+      document.getElementById('empty-state').classList.toggle('hidden', !isEmpty);
+      document.getElementById('table-view-container').classList.toggle('hidden', isEmpty || viewMode !== 'table');
+      document.getElementById('cards-view-container').classList.toggle('hidden', isEmpty || viewMode !== 'cards');
+
+      // Slice page
+      const totalPages = Math.max(1, Math.ceil(filteredRows.length / pageSize));
+      if (currentPage > totalPages) currentPage = totalPages;
+      const startIdx = (currentPage - 1) * pageSize;
+      const pageItems = filteredRows.slice(startIdx, startIdx + pageSize);
+
+      renderTableHeader();
+
+      if (viewMode === 'table') {
+        const tbody = document.getElementById('table-body');
+        tbody.innerHTML = pageItems.map((row, idx) => {
+          const globalIdx = allRows.indexOf(row);
+          return `
+            <tr onclick="openModal(${globalIdx})" class="hover:bg-slate-800/50 transition cursor-pointer group">
+              ${displayCols.map((col, cIdx) => `
+                <td class="px-4 py-3 ${cIdx <= 1 ? 'font-medium text-white' : 'text-slate-300'}">
+                  ${formatCell(col, row[col])}
+                </td>
+              `).join('')}
+              <td class="px-4 py-3 text-right whitespace-nowrap">
+                <button onclick="event.stopPropagation(); openModal(${globalIdx})" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-800 group-hover:bg-cyan-500/20 text-slate-300 group-hover:text-cyan-300 border border-slate-700 group-hover:border-cyan-500/40 text-xs transition">
+                  <i data-lucide="maximize-2" class="w-3 h-3"></i> ดูสเปก
+                </button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      } else {
+        const grid = document.getElementById('cards-view-container');
+        grid.innerHTML = pageItems.map(row => {
+          const globalIdx = allRows.indexOf(row);
+          const titleCol = displayCols[1] || displayCols[0];
+          const subCol = displayCols[0];
+          const restCols = displayCols.slice(2, 8);
+          return `
+            <div onclick="openModal(${globalIdx})" class="glass-card rounded-2xl p-5 hover:border-cyan-500/50 transition cursor-pointer flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="text-xs font-semibold text-cyan-400 uppercase tracking-wider">${row[subCol] || '-'}</span>
+                  <span class="text-[11px] text-slate-500">#${globalIdx + 1}</span>
+                </div>
+                <h3 class="text-base font-bold text-white group-hover:text-cyan-300 transition mb-4">${row[titleCol] || '-'}</h3>
+                <div class="space-y-2 border-t border-slate-800/80 pt-3 text-xs">
+                  ${restCols.map(c => `
+                    <div class="flex items-center justify-between gap-2">
+                      <span class="text-slate-400 truncate">${c}:</span>
+                      <span class="text-slate-200 font-medium text-right">${formatCell(c, row[c])}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-800/60 flex justify-end">
+                <span class="text-xs text-cyan-400 group-hover:underline flex items-center gap-1">
+                  ดูสเปกทั้งหมด (${allHeaders.length} รายการ) <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      renderPagination(filteredRows.length, totalPages);
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function renderPagination(totalItems, totalPages) {
+      const info = document.getElementById('page-info');
+      const btns = document.getElementById('page-buttons');
+      if (totalItems === 0) {
+        info.textContent = '';
+        btns.innerHTML = '';
+        return;
+      }
+      const start = (currentPage - 1) * pageSize + 1;
+      const end = Math.min(totalItems, currentPage * pageSize);
+      info.textContent = `หน้า ${currentPage} จาก ${totalPages} (รายการที่ ${start} - ${end})`;
+
+      if (totalPages <= 1) {
+        btns.innerHTML = '';
+        return;
+      }
+
+      let htmlBtns = '';
+      htmlBtns += `<button onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:pointer-events-none text-xs text-slate-200 border border-slate-700 transition">ก่อนหน้า</button>`;
+
+      const maxButtons = 5;
+      let startP = Math.max(1, currentPage - 2);
+      let endP = Math.min(totalPages, startP + maxButtons - 1);
+      if (endP - startP < maxButtons - 1) startP = Math.max(1, endP - maxButtons + 1);
+
+      for (let p = startP; p <= endP; p++) {
+        const active = p === currentPage;
+        htmlBtns += `<button onclick="goToPage(${p})" class="w-8 h-8 rounded-lg text-xs font-semibold transition ${active ? 'bg-cyan-500 text-slate-950' : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700'}">${p}</button>`;
+      }
+
+      htmlBtns += `<button onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:pointer-events-none text-xs text-slate-200 border border-slate-700 transition">ถัดไป</button>`;
+      btns.innerHTML = htmlBtns;
+    }
+
+    window.goToPage = function(p) {
+      currentPage = p;
+      applyFiltersAndRender();
+      window.scrollTo({ top: 260, behavior: 'smooth' });
+    };
+
+    window.openModal = function(idx) {
+      const row = allRows[idx];
+      if (!row) return;
+      const title = (row[displayCols[0]] ? row[displayCols[0]] + ' — ' : '') + (row[displayCols[1]] || '');
+      document.getElementById('modal-title').textContent = title || 'รายละเอียดสเปก';
+      
+      const body = document.getElementById('modal-body');
+      body.innerHTML = `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          ${allHeaders.map(h => `
+            <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3">
+              <div class="text-[11px] text-slate-400 mb-1">${h}</div>
+              <div class="text-sm font-medium text-white break-words">${formatCell(h, row[h])}</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      const modal = document.getElementById('detail-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      if (window.lucide) window.lucide.createIcons();
+    };
+
+    window.closeModal = function() {
+      const modal = document.getElementById('detail-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    };
+
+    window.resetAllFilters = function() {
+      searchQuery = '';
+      activeFilters = {};
+      sortCol = null;
+      currentPage = 1;
+      document.getElementById('search-input').value = '';
+      document.getElementById('clear-search').classList.add('hidden');
+      document.querySelectorAll('.filter-select').forEach(s => s.value = '');
+      applyFiltersAndRender();
+    };
+
+    // Event Listeners
+    document.getElementById('search-input').addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      document.getElementById('clear-search').classList.toggle('hidden', !searchQuery);
+      currentPage = 1;
+      applyFiltersAndRender();
+    });
+
+    document.getElementById('clear-search').addEventListener('click', () => {
+      searchQuery = '';
+      document.getElementById('search-input').value = '';
+      document.getElementById('clear-search').classList.add('hidden');
+      currentPage = 1;
+      applyFiltersAndRender();
+    });
+
+    document.getElementById('page-size').addEventListener('change', (e) => {
+      pageSize = parseInt(e.target.value, 10) || 25;
+      currentPage = 1;
+      applyFiltersAndRender();
+    });
+
+    document.getElementById('btn-view-table').addEventListener('click', () => {
+      viewMode = 'table';
+      document.getElementById('btn-view-table').className = 'px-2.5 py-1.5 rounded-lg text-xs font-medium bg-cyan-500/20 text-cyan-300 flex items-center gap-1 transition';
+      document.getElementById('btn-view-cards').className = 'px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white flex items-center gap-1 transition';
+      applyFiltersAndRender();
+    });
+
+    document.getElementById('btn-view-cards').addEventListener('click', () => {
+      viewMode = 'cards';
+      document.getElementById('btn-view-cards').className = 'px-2.5 py-1.5 rounded-lg text-xs font-medium bg-cyan-500/20 text-cyan-300 flex items-center gap-1 transition';
+      document.getElementById('btn-view-table').className = 'px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white flex items-center gap-1 transition';
+      applyFiltersAndRender();
+    });
+
+    document.getElementById('btn-reset').addEventListener('click', resetAllFilters);
+
+    document.getElementById('detail-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'detail-modal') closeModal();
+    });
+
+    // Init
+    buildStats();
+    buildFilters();
+    applyFiltersAndRender();
+  </script>
+</body>
+</html>

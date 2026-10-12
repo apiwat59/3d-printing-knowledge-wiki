@@ -1,0 +1,134 @@
+{
+  "name": "MMS",
+  "slug": "mms",
+  "title": "ระบบมัลติคัลเลอร์ (Multi-Material System)",
+  "headers": [
+    "Seller",
+    "Name",
+    "Max Filament/Unit",
+    "Max Unit",
+    "Filament Cutting",
+    "Open Source",
+    "Estimated Price (THB)"
+  ],
+  "total_rows": 13,
+  "data": [
+    {
+      "Seller": "Annex3D",
+      "Name": "Trad Rack",
+      "Max Filament/Unit": "",
+      "Max Unit": "1",
+      "Filament Cutting": "Y",
+      "Open Source": "Y",
+      "Estimated Price (THB)": "฿4,000"
+    },
+    {
+      "Seller": "Anycubic",
+      "Name": "ACE Pro",
+      "Max Filament/Unit": "4",
+      "Max Unit": "4",
+      "Filament Cutting": "N",
+      "Open Source": "N",
+      "Estimated Price (THB)": "฿11,000"
+    },
+    {
+      "Seller": "ArmoredTurtle",
+      "Name": "BoxTurtle",
+      "Max Filament/Unit": "4",
+      "Max Unit": "",
+      "Filament Cutting": "Y",
+      "Open Source": "Y",
+      "Estimated Price (THB)": "฿12,500"
+    },
+    {
+      "Seller": "Bambu Lab",
+      "Name": "AMS-LITE",
+      "Max Filament/Unit": "4",
+      "Max Unit": "1",
+      "Filament Cutting": "N",
+      "Open Source": "N",
+      "Estimated Price (THB)": "฿8,500"
+    },
+    {
+      "Seller": "Bambu Lab",
+      "Name": "AMS",
+      "Max Filament/Unit": "4",
+      "Max Unit": "4",
+      "Filament Cutting": "N",
+      "Open Source": "N",
+      "Estimated Price (THB)": "฿12,000"
+    },
+    {
+      "Seller": "Bambu Lab",
+      "Name": "AMS 2 Pro",
+      "Max Filament/Unit": "4",
+      "Max Unit": "4",
+      "Filament Cutting": "N",
+      "Open Source": "N",
+      "Estimated Price (THB)": "฿14,900"
+    },
+    {
+      "Seller": "Bambu Lab",
+      "Name": "AMS HT",
+      "Max Filament/Unit": "1",
+      "Max Unit": "8",
+      "Filament Cutting": "N",
+      "Open Source": "N",
+      "Estimated Price (THB)": "฿6,490"
+    },
+    {
+      "Seller": "Co-Print",
+      "Name": "ChromaSet",
+      "Max Filament/Unit": "1",
+      "Max Unit": "",
+      "Filament Cutting": "Y",
+      "Open Source": "N",
+      "Estimated Price (THB)": "฿11,000"
+    },
+    {
+      "Seller": "Co-Print",
+      "Name": "Multi-Filament Module",
+      "Max Filament/Unit": "1",
+      "Max Unit": "",
+      "Filament Cutting": "Y",
+      "Open Source": "N",
+      "Estimated Price (THB)": "฿13,000"
+    },
+    {
+      "Seller": "Creality",
+      "Name": "CFS",
+      "Max Filament/Unit": "4",
+      "Max Unit": "4",
+      "Filament Cutting": "N",
+      "Open Source": "N",
+      "Estimated Price (THB)": "฿11,000"
+    },
+    {
+      "Seller": "Enraged Rabbit",
+      "Name": "ERCFv2",
+      "Max Filament/Unit": "",
+      "Max Unit": "1",
+      "Filament Cutting": "Y",
+      "Open Source": "Y",
+      "Estimated Price (THB)": "฿5,000"
+    },
+    {
+      "Seller": "Mosasic",
+      "Name": "Palette 3 Pro",
+      "Max Filament/Unit": "8",
+      "Max Unit": "1",
+      "Filament Cutting": "Y",
+      "Open Source": "N",
+      "Estimated Price (THB)": "฿27,500"
+    },
+    {
+      "Seller": "Prusa",
+      "Name": "MMU3",
+      "Max Filament/Unit": "5",
+      "Max Unit": "1",
+      "Filament Cutting": "Y",
+      "Open Source": "N",
+      "Estimated Price (THB)": "฿11,000"
+    }
+  ]
+}

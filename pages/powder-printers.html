@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="th" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เครื่องพิมพ์ระบบผงเลเซอร์ (Powder 3D Printers - SLS/SLM) | 3D Printing Knowledge Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+      background-color: #0b0f19;
+      color: #e2e8f0;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(51, 65, 85, 0.6);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-cyan-500/30 selection:text-cyan-200">
+  <div id="header-mount"></div>
+
+  <!-- Main Content -->
+  <main class="flex-grow max-w-[1440px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    <!-- Breadcrumb & Quick Tab Switcher -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+      <nav class="flex items-center space-x-2 text-xs sm:text-sm text-slate-400">
+        <a href="../index.html" class="hover:text-cyan-400 flex items-center gap-1 transition">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i> หน้าแรก
+        </a>
+        <span>/</span>
+        <span class="text-slate-500">เครื่องพิมพ์</span>
+        <span>/</span>
+        <span class="text-cyan-400 font-medium">Powder 3D Printer</span>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="../index.html#compare-section" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-xs font-medium transition">
+          <i data-lucide="git-compare" class="w-3.5 h-3.5"></i> เปรียบเทียบสเปก
+        </a>
+        <a href="../data/powder-printers.csv" download="powder-printers.csv" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium transition">
+          <i data-lucide="download" class="w-3.5 h-3.5 text-cyan-400"></i> ดาวน์โหลด CSV
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero Header -->
+    <div class="glass-card rounded-2xl p-6 sm:p-8 mb-8 relative overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="flex items-start gap-4">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-indigo-500/20 border border-cyan-500/30 flex items-center justify-center flex-shrink-0 text-cyan-400 shadow-lg shadow-cyan-950/50">
+            <i data-lucide="sparkles" class="w-7 h-7"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2.5 flex-wrap">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 uppercase tracking-wider">
+                เครื่องพิมพ์
+              </span>
+              <span class="text-xs text-slate-400 font-mono">Tab: Powder 3D Printer</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-bold text-white mt-1.5">เครื่องพิมพ์ระบบผงเลเซอร์ (Powder 3D Printers - SLS/SLM)</h1>
+            <p class="text-slate-400 text-sm sm:text-base mt-1 max-w-3xl">เครื่องพิมพ์อุตสาหกรรมและตั้งโต๊ะระบบหลอมผงด้วยเลเซอร์ (SLS / Direct Metal Laser Sintering)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dynamic Stat Cards -->
+      <div id="stats-container" class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6 pt-6 border-t border-slate-800/80">
+      </div>
+    </div>
+
+    <!-- Filter & Search Controls -->
+    <div class="glass-card rounded-2xl p-4 sm:p-5 mb-6">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+        <!-- Search Input -->
+        <div class="md:col-span-4 lg:col-span-5 relative">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+          <input id="search-input" type="text" placeholder="ค้นหาในหมวดนี้ (ชื่อรุ่น, ยี่ห้อ, สเปก...)" 
+            class="w-full pl-10 pr-9 py-2.5 bg-slate-900/90 border border-slate-700/80 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition">
+          <button id="clear-search" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Dynamic Filter Selectors -->
+        <div id="dynamic-filters" class="md:col-span-5 lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+        </div>
+
+        <!-- View Mode & Reset -->
+        <div class="md:col-span-3 lg:col-span-2 flex items-center justify-end gap-2">
+          <div class="inline-flex bg-slate-900 p-1 rounded-xl border border-slate-800">
+            <button id="btn-view-table" class="px-2.5 py-1.5 rounded-lg text-xs font-medium bg-cyan-500/20 text-cyan-300 flex items-center gap-1 transition" title="มุมมองตาราง">
+              <i data-lucide="table" class="w-3.5 h-3.5"></i> ตาราง
+            </button>
+            <button id="btn-view-cards" class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white flex items-center gap-1 transition" title="มุมมองการ์ด">
+              <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i> การ์ด
+            </button>
+          </div>
+          <button id="btn-reset" class="p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/80 transition" title="ล้างตัวกรองทั้งหมด">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Status & Page Size -->
+      <div class="flex flex-wrap items-center justify-between gap-2 mt-3 pt-3 border-t border-slate-800/60 text-xs text-slate-400">
+        <div>
+          แสดงผล <span id="showing-count" class="text-cyan-400 font-semibold">0</span> จากทั้งหมด <span id="total-count" class="text-white font-semibold">0</span> รายการ
+          <span id="active-filter-badge" class="hidden ml-2 px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">กำลังใช้ตัวกรอง</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span>แสดงหน้าละ:</span>
+          <select id="page-size" class="bg-slate-900 border border-slate-700 rounded-lg px-2 py-1 text-slate-200 focus:outline-none focus:border-cyan-500">
+            <option value="25">25 รายการ</option>
+            <option value="50">50 รายการ</option>
+            <option value="100">100 รายการ</option>
+            <option value="9999">ทั้งหมด</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table View Container -->
+    <div id="table-view-container" class="glass-card rounded-2xl overflow-hidden shadow-2xl">
+      <div class="overflow-x-auto custom-scrollbar">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr id="table-head-row" class="bg-slate-900/95 border-b border-slate-800 text-[11px] font-semibold text-slate-400 uppercase tracking-wider select-none">
+            </tr>
+          </thead>
+          <tbody id="table-body" class="divide-y divide-slate-800/60 text-xs sm:text-sm">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Card Grid View Container -->
+    <div id="cards-view-container" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden glass-card rounded-2xl p-12 text-center my-6">
+      <div class="w-16 h-16 rounded-full bg-slate-800/80 flex items-center justify-center mx-auto mb-4 text-slate-500">
+        <i data-lucide="search-x" class="w-8 h-8"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-white">ไม่พบข้อมูลที่ตรงกับเงื่อนไข</h3>
+      <p class="text-slate-400 text-sm mt-1">ลองเปลี่ยนคำค้นหา หรือกดปุ่มรีเซ็ตตัวกรองเพื่อดูข้อมูลทั้งหมด</p>
+      <button onclick="resetAllFilters()" class="mt-4 px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs transition">
+        ล้างตัวกรองทั้งหมด
+      </button>
+    </div>
+
+    <!-- Pagination -->
+    <div id="pagination-bar" class="flex flex-wrap items-center justify-between gap-4 mt-6 px-2">
+      <div id="page-info" class="text-xs text-slate-400"></div>
+      <div id="page-buttons" class="flex items-center gap-1.5"></div>
+    </div>
+
+  </main>
+
+  <!-- Detail Modal -->
+  <div id="detail-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div class="flex items-center justify-between px-6 py-4 bg-slate-800/70 border-b border-slate-700">
+        <div>
+          <span class="text-[11px] uppercase tracking-wider text-cyan-400 font-semibold">Powder 3D Printer Specification</span>
+          <h3 id="modal-title" class="text-lg font-bold text-white mt-0.5">รายละเอียดข้อมูล</h3>
+        </div>
+        <button onclick="closeModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-700 transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div id="modal-body" class="p-6 overflow-y-auto custom-scrollbar space-y-3 text-sm">
+      </div>
+      <div class="px-6 py-3.5 bg-slate-950/70 border-t border-slate-800 flex justify-end gap-2">
+        <button onclick="closeModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium transition">
+          ปิดหน้าต่าง
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-mount"></div>
+
+  <!-- Embedded Data -->
+  <script id="tab-data" type="application/json">{"name": "Powder 3D Printer", "slug": "powder-printers", "title": "เครื่องพิมพ์ Powder 3D Printer (SLS)", "headers": ["Seller", "Printer", "Technology Type", "Build Length (mm)", "Build Width (mm)", "Build Height (mm)", "Volume (L)", "Weight (kg)", "Laser Type", "Laser Power (W)", "Max Scan Speed (m/s)", "Min. Layer Height (µm)", "Max Chamber Temp (°C)", "Atmosphere Control", "Supported Materials", "Touchscreen", "Max Power (W)", "EST Price (THB)", "Release Year"], "total_rows": 33, "data": [{"Seller": "3D Systems", "Printer": "DMP Flex 350 (Single)", "Technology Type": "SLM", "Build Length (mm)": "275", "Build Width (mm)": "275", "Build Height (mm)": "420", "Volume (L)": "31.8", "Weight (kg)": "2500", "Laser Type": "Yb Fiber", "Laser Power (W)": "500", "Max Scan Speed (m/s)": "2.5", "Min. Layer Height (µm)": "5", "Max Chamber Temp (°C)": "200", "Atmosphere Control": "Ar", "Supported Materials": "Steel, Ti64, AlSi10Mg, CoCr", "Touchscreen": "Yes", "Max Power (W)": "8000", "EST Price (THB)": "N/A", "Release Year": "2018"}, {"Seller": "3D Systems", "Printer": "DMP Flex 350 Triple", "Technology Type": "SLM", "Build Length (mm)": "350", "Build Width (mm)": "350", "Build Height (mm)": "350", "Volume (L)": "42.9", "Weight (kg)": "3000", "Laser Type": "Yb Fiber", "Laser Power (W)": "", "Max Scan Speed (m/s)": "6", "Min. Layer Height (µm)": "5", "Max Chamber Temp (°C)": "200", "Atmosphere Control": "Ar", "Supported Materials": "Steel, Ti, Maraging Steel", "Touchscreen": "Yes", "Max Power (W)": "18,000", "EST Price (THB)": "N/A", "Release Year": "2021"}, {"Seller": "3D Systems", "Printer": "ProX SLS 6100", "Technology Type": "SLS", "Build Length (mm)": "381", "Build Width (mm)": "330", "Build Height (mm)": "460", "Volume (L)": "57.8", "Weight (kg)": "1360", "Laser Type": "CO2", "Laser Power (W)": "100", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "80", "Max Chamber Temp (°C)": "", "Atmosphere Control": "N2", "Supported Materials": "PA11, PA12, composites", "Touchscreen": "Yes", "Max Power (W)": "10000", "EST Price (THB)": "N/A", "Release Year": "2017"}, {"Seller": "3D Systems", "Printer": "SLS 300", "Technology Type": "SLS", "Build Length (mm)": "300", "Build Width (mm)": "300", "Build Height (mm)": "300", "Volume (L)": "27", "Weight (kg)": "310", "Laser Type": "CO2", "Laser Power (W)": "50", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "100", "Max Chamber Temp (°C)": "190", "Atmosphere Control": "Optional Atmosphere Generator", "Supported Materials": "PA11, PA12", "Touchscreen": "Yes", "Max Power (W)": "2000", "EST Price (THB)": "N/A", "Release Year": "2023"}, {"Seller": "3D Systems", "Printer": "SLS 380", "Technology Type": "SLS", "Build Length (mm)": "381", "Build Width (mm)": "330", "Build Height (mm)": "460", "Volume (L)": "57.8", "Weight (kg)": "1360", "Laser Type": "CO2", "Laser Power (W)": "100", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "80", "Max Chamber Temp (°C)": "195", "Atmosphere Control": "N2", "Supported Materials": "PA11, PA12, CF/GF composites", "Touchscreen": "Yes", "Max Power (W)": "10000", "EST Price (THB)": "N/A", "Release Year": "2023"}, {"Seller": "3D Systems", "Printer": "sPro 230", "Technology Type": "SLS", "Build Length (mm)": "550", "Build Width (mm)": "550", "Build Height (mm)": "750", "Volume (L)": "226.9", "Weight (kg)": "3500", "Laser Type": "CO2", "Laser Power (W)": "70", "Max Scan Speed (m/s)": "10", "Min. Layer Height (µm)": "80", "Max Chamber Temp (°C)": "185", "Atmosphere Control": "N2", "Supported Materials": "Nylon 11, Nylon 12", "Touchscreen": "Yes", "Max Power (W)": "18000", "EST Price (THB)": "N/A", "Release Year": "2014"}, {"Seller": "EOS", "Printer": "EOS P 500", "Technology Type": "SLS", "Build Length (mm)": "500", "Build Width (mm)": "330", "Build Height (mm)": "400", "Volume (L)": "66", "Weight (kg)": "7000", "Laser Type": "CO2", "Laser Power (W)": "", "Max Scan Speed (m/s)": "10", "Min. Layer Height (µm)": "120", "Max Chamber Temp (°C)": "220", "Atmosphere Control": "Protective gas management", "Supported Materials": "PA11, PA12, PA6, TPU, PEKK", "Touchscreen": "Yes", "Max Power (W)": "", "EST Price (THB)": "N/A", "Release Year": "2017"}, {"Seller": "EOS", "Printer": "EOS P810", "Technology Type": "SLS", "Build Length (mm)": "700", "Build Width (mm)": "380", "Build Height (mm)": "380", "Volume (L)": "101.1", "Weight (kg)": "2300", "Laser Type": "CO2", "Laser Power (W)": "", "Max Scan Speed (m/s)": "6 (x2)", "Min. Layer Height (µm)": "120", "Max Chamber Temp (°C)": "300", "Atmosphere Control": "N2", "Supported Materials": "PEKK-CF, PA", "Touchscreen": "Yes", "Max Power (W)": "32000", "EST Price (THB)": "N/A", "Release Year": "2018"}, {"Seller": "EOS", "Printer": "FORMIGA P 110 Velocis", "Technology Type": "SLS", "Build Length (mm)": "200", "Build Width (mm)": "250", "Build Height (mm)": "330", "Volume (L)": "16.5", "Weight (kg)": "600", "Laser Type": "CO2", "Laser Power (W)": "30", "Max Scan Speed (m/s)": "5", "Min. Layer Height (µm)": "60", "Max Chamber Temp (°C)": "195", "Atmosphere Control": "N2", "Supported Materials": "PA11, PA12, Alumide", "Touchscreen": "Yes", "Max Power (W)": "5000", "EST Price (THB)": "N/A", "Release Year": "2018"}, {"Seller": "EOS", "Printer": "EOS M 290", "Technology Type": "SLM", "Build Length (mm)": "250", "Build Width (mm)": "250", "Build Height (mm)": "325", "Volume (L)": "20.3", "Weight (kg)": "1250", "Laser Type": "Yb Fiber", "Laser Power (W)": "400", "Max Scan Speed (m/s)": "7", "Min. Layer Height (µm)": "20", "Max Chamber Temp (°C)": "200", "Atmosphere Control": "Ar", "Supported Materials": "Steel, Al, Ti, Ni alloys", "Touchscreen": "Yes", "Max Power (W)": "8500", "EST Price (THB)": "N/A", "Release Year": "2014"}, {"Seller": "EOS", "Printer": "EOS M 400-4", "Technology Type": "SLM", "Build Length (mm)": "400", "Build Width (mm)": "400", "Build Height (mm)": "400", "Volume (L)": "64", "Weight (kg)": "4900", "Laser Type": "Yb Fiber", "Laser Power (W)": "", "Max Scan Speed (m/s)": "7", "Min. Layer Height (µm)": "40", "Max Chamber Temp (°C)": "200", "Atmosphere Control": "Ar / N2 (material-dependent)", "Supported Materials": "Steel, Al, Ti, Ni alloys", "Touchscreen": "Yes", "Max Power (W)": "45000", "EST Price (THB)": "N/A", "Release Year": "2016"}, {"Seller": "Farsoon", "Printer": "HT252P", "Technology Type": "SLS", "Build Length (mm)": "250", "Build Width (mm)": "250", "Build Height (mm)": "320", "Volume (L)": "20", "Weight (kg)": "2100", "Laser Type": "CO2", "Laser Power (W)": "55", "Max Scan Speed (m/s)": "10", "Min. Layer Height (µm)": "80", "Max Chamber Temp (°C)": "220", "Atmosphere Control": "N2", "Supported Materials": "PA11, PA12, TPU", "Touchscreen": "Yes", "Max Power (W)": "10000", "EST Price (THB)": "N/A", "Release Year": "2019"}, {"Seller": "Farsoon", "Printer": "HT403P", "Technology Type": "SLS", "Build Length (mm)": "400", "Build Width (mm)": "400", "Build Height (mm)": "540", "Volume (L)": "86.4", "Weight (kg)": "3000", "Laser Type": "CO2", "Laser Power (W)": "100", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "100", "Max Chamber Temp (°C)": "220", "Atmosphere Control": "N2", "Supported Materials": "PA11, PA12, PA6, TPU", "Touchscreen": "Yes", "Max Power (W)": "32000", "EST Price (THB)": "N/A", "Release Year": "2017"}, {"Seller": "Farsoon", "Printer": "HS403P", "Technology Type": "SLS", "Build Length (mm)": "400", "Build Width (mm)": "400", "Build Height (mm)": "540", "Volume (L)": "86.4", "Weight (kg)": "3000", "Laser Type": "CO2", "Laser Power (W)": "55", "Max Scan Speed (m/s)": "15.2", "Min. Layer Height (µm)": "100", "Max Chamber Temp (°C)": "190", "Atmosphere Control": "N2", "Supported Materials": "PA12, PA11, elastomers", "Touchscreen": "Yes", "Max Power (W)": "18000", "EST Price (THB)": "N/A", "Release Year": "2017"}, {"Seller": "Farsoon", "Printer": "ST252P", "Technology Type": "SLS", "Build Length (mm)": "250", "Build Width (mm)": "250", "Build Height (mm)": "320", "Volume (L)": "20", "Weight (kg)": "2100", "Laser Type": "CO2", "Laser Power (W)": "100", "Max Scan Speed (m/s)": "10", "Min. Layer Height (µm)": "80", "Max Chamber Temp (°C)": "280", "Atmosphere Control": "N2", "Supported Materials": "PA12, PA6, PA66, PPS", "Touchscreen": "Yes", "Max Power (W)": "15000", "EST Price (THB)": "N/A", "Release Year": "2019"}, {"Seller": "Formlabs", "Printer": "Fuse 1+ 30W", "Technology Type": "SLS", "Build Length (mm)": "165", "Build Width (mm)": "165", "Build Height (mm)": "300", "Volume (L)": "8.17", "Weight (kg)": "114", "Laser Type": "Ytterbium Fiber", "Laser Power (W)": "30", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "110", "Max Chamber Temp (°C)": "200", "Atmosphere Control": "N2", "Supported Materials": "PA11, PA12, PA12GF, TPU", "Touchscreen": "Yes", "Max Power (W)": "1725", "EST Price (THB)": "900,000 - 1,200,000", "Release Year": "2022"}, {"Seller": "GE Additive", "Printer": "Arcam Spectra H", "Technology Type": "EBM", "Build Length (mm)": "250", "Build Width (mm)": "250", "Build Height (mm)": "430", "Volume (L)": "26.9", "Weight (kg)": "1500", "Laser Type": "Electron Beam", "Laser Power (W)": "6000", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "50", "Max Chamber Temp (°C)": "700", "Atmosphere Control": "Vacuum", "Supported Materials": "Ti64, TiAl, CoCr", "Touchscreen": "Yes", "Max Power (W)": "20000", "EST Price (THB)": "N/A", "Release Year": "2018"}, {"Seller": "HP", "Printer": "Jet Fusion 4200", "Technology Type": "MJF", "Build Length (mm)": "380", "Build Width (mm)": "284", "Build Height (mm)": "380", "Volume (L)": "41", "Weight (kg)": "750", "Laser Type": "IR lamps", "Laser Power (W)": "", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "80", "Max Chamber Temp (°C)": "170", "Atmosphere Control": "None", "Supported Materials": "PA12, PA11", "Touchscreen": "Yes", "Max Power (W)": "12000", "EST Price (THB)": "N/A", "Release Year": "2016"}, {"Seller": "HP", "Printer": "Jet Fusion 5200", "Technology Type": "MJF", "Build Length (mm)": "380", "Build Width (mm)": "284", "Build Height (mm)": "380", "Volume (L)": "41", "Weight (kg)": "880", "Laser Type": "IR lamps", "Laser Power (W)": "", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "80", "Max Chamber Temp (°C)": "170", "Atmosphere Control": "None", "Supported Materials": "PA12, PA11, PA12GB, TPU, PP", "Touchscreen": "Yes", "Max Power (W)": "12000", "EST Price (THB)": "N/A", "Release Year": "2019"}, {"Seller": "HP", "Printer": "Jet Fusion 580 Color", "Technology Type": "MJF", "Build Length (mm)": "332", "Build Width (mm)": "190", "Build Height (mm)": "248", "Volume (L)": "15.6", "Weight (kg)": "650", "Laser Type": "IR lamps", "Laser Power (W)": "", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "80", "Max Chamber Temp (°C)": "170", "Atmosphere Control": "None", "Supported Materials": "PA12 (Mono/Color)", "Touchscreen": "Yes", "Max Power (W)": "9000", "EST Price (THB)": "N/A", "Release Year": "2018"}, {"Seller": "Renishaw", "Printer": "RenAM 500Q", "Technology Type": "SLM", "Build Length (mm)": "250", "Build Width (mm)": "250", "Build Height (mm)": "350", "Volume (L)": "21.9", "Weight (kg)": "2040", "Laser Type": "Yb Fiber", "Laser Power (W)": "", "Max Scan Speed (m/s)": "10", "Min. Layer Height (µm)": "20", "Max Chamber Temp (°C)": "200", "Atmosphere Control": "Ar", "Supported Materials": "Steel, Ti, Al alloys", "Touchscreen": "Yes", "Max Power (W)": "18000", "EST Price (THB)": "N/A", "Release Year": "2018"}, {"Seller": "Sharebot", "Printer": "SnowWhite 2", "Technology Type": "SLS", "Build Length (mm)": "100", "Build Width (mm)": "100", "Build Height (mm)": "100", "Volume (L)": "1", "Weight (kg)": "120", "Laser Type": "CO2", "Laser Power (W)": "14", "Max Scan Speed (m/s)": "3.5", "Min. Layer Height (µm)": "50", "Max Chamber Temp (°C)": "190", "Atmosphere Control": "N2/Ar", "Supported Materials": "PA11, PA12, TPU, ABS, filled powders", "Touchscreen": "Web UI", "Max Power (W)": "8000", "EST Price (THB)": "N/A", "Release Year": "2020"}, {"Seller": "Sintratec", "Printer": "S2", "Technology Type": "SLS", "Build Length (mm)": "160", "Build Width (mm)": "160", "Build Height (mm)": "400", "Volume (L)": "10.2", "Weight (kg)": "70", "Laser Type": "Ytterbium Fiber", "Laser Power (W)": "10", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "100", "Max Chamber Temp (°C)": "180", "Atmosphere Control": "None", "Supported Materials": "PA12, TPE", "Touchscreen": "Yes", "Max Power (W)": "2000", "EST Price (THB)": "~1,300,000", "Release Year": "2018"}, {"Seller": "Sinterit", "Printer": "Lisa Pro", "Technology Type": "SLS", "Build Length (mm)": "110", "Build Width (mm)": "160", "Build Height (mm)": "230", "Volume (L)": "4.048", "Weight (kg)": "90", "Laser Type": "IR Diode (808nm)", "Laser Power (W)": "5", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "75", "Max Chamber Temp (°C)": "200", "Atmosphere Control": "Built-in N2 chamber", "Supported Materials": "PA11, PA12, TPU (Flexa), PP", "Touchscreen": "Yes", "Max Power (W)": "1900", "EST Price (THB)": "600,000 - 800,000", "Release Year": "2018"}, {"Seller": "Sinterit", "Printer": "Lisa X", "Technology Type": "SLS", "Build Length (mm)": "130", "Build Width (mm)": "180", "Build Height (mm)": "330", "Volume (L)": "7.7", "Weight (kg)": "145", "Laser Type": "IR Fiber Coupled Diode", "Laser Power (W)": "30", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "75", "Max Chamber Temp (°C)": "210", "Atmosphere Control": "Built-in inert gas control", "Supported Materials": "PA11, PA12, TPU (Flexa), PP", "Touchscreen": "Yes", "Max Power (W)": "1400", "EST Price (THB)": "1,000,000 - 1,300,000", "Release Year": "2021"}, {"Seller": "Sinterit", "Printer": "NILS 480", "Technology Type": "SLS", "Build Length (mm)": "200", "Build Width (mm)": "200", "Build Height (mm)": "330", "Volume (L)": "13.2", "Weight (kg)": "250", "Laser Type": "IR (Fiber)", "Laser Power (W)": "30", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "75", "Max Chamber Temp (°C)": "190", "Atmosphere Control": "N2", "Supported Materials": "PA11, PA12, TPU, PP, composites", "Touchscreen": "Yes", "Max Power (W)": "", "EST Price (THB)": "N/A", "Release Year": "2022"}, {"Seller": "SLM Solutions", "Printer": "SLM 280", "Technology Type": "SLM", "Build Length (mm)": "280", "Build Width (mm)": "280", "Build Height (mm)": "365", "Volume (L)": "28.6", "Weight (kg)": "1500", "Laser Type": "Yb Fiber", "Laser Power (W)": "", "Max Scan Speed (m/s)": "8", "Min. Layer Height (µm)": "20", "Max Chamber Temp (°C)": "200", "Atmosphere Control": "Ar", "Supported Materials": "Steel, Al, Ti, Ni alloys", "Touchscreen": "Yes", "Max Power (W)": "15000", "EST Price (THB)": "N/A", "Release Year": "2013"}, {"Seller": "Nikon SLM Solutions", "Printer": "NXG XII 600", "Technology Type": "SLM", "Build Length (mm)": "600", "Build Width (mm)": "600", "Build Height (mm)": "600", "Volume (L)": "216", "Weight (kg)": "12000", "Laser Type": "Yb Fiber", "Laser Power (W)": "", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "20", "Max Chamber Temp (°C)": "200", "Atmosphere Control": "Ar", "Supported Materials": "Al, Ti, Ni alloys", "Touchscreen": "Yes", "Max Power (W)": "120000", "EST Price (THB)": "N/A", "Release Year": "2021"}, {"Seller": "Stratasys", "Printer": "H350", "Technology Type": "SAF", "Build Length (mm)": "315", "Build Width (mm)": "208", "Build Height (mm)": "293", "Volume (L)": "19.2", "Weight (kg)": "1200", "Laser Type": "IR lamps", "Laser Power (W)": "", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "100", "Max Chamber Temp (°C)": "170", "Atmosphere Control": "None", "Supported Materials": "PA11, PA12, PP, SAF ReLife PA12", "Touchscreen": "Yes", "Max Power (W)": "5000", "EST Price (THB)": "N/A", "Release Year": "2021"}, {"Seller": "EOS", "Printer": "EOS P3 NEXT", "Technology Type": "SLS", "Build Length (mm)": "340", "Build Width (mm)": "340", "Build Height (mm)": "600", "Volume (L)": "69.36", "Weight (kg)": "1400", "Laser Type": "CO2", "Laser Power (W)": "70", "Max Scan Speed (m/s)": "6", "Min. Layer Height (µm)": "", "Max Chamber Temp (°C)": "", "Atmosphere Control": "N/A", "Supported Materials": "PA 2200, PA 2220 HighReuse, PA 2201, PA 1101, PA 3200 GF, PA 2241 FR, ALM PA 950 HD", "Touchscreen": "N/A", "Max Power (W)": "10000", "EST Price (THB)": "N/A", "Release Year": "2024"}, {"Seller": "Formlabs", "Printer": "Fuse X1", "Technology Type": "SLS", "Build Length (mm)": "330", "Build Width (mm)": "330", "Build Height (mm)": "565", "Volume (L)": "61.5285", "Weight (kg)": "", "Laser Type": "Ytterbium Fiber", "Laser Power (W)": "120", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "110", "Max Chamber Temp (°C)": "210", "Atmosphere Control": "N2 / external inert gas supply", "Supported Materials": "Nylon 12", "Touchscreen": "Yes", "Max Power (W)": "7500", "EST Price (THB)": "N/A", "Release Year": "2026"}, {"Seller": "EOS", "Printer": "EOS P 770", "Technology Type": "SLS", "Build Length (mm)": "700", "Build Width (mm)": "380", "Build Height (mm)": "580", "Volume (L)": "154.28", "Weight (kg)": "2300", "Laser Type": "CO2", "Laser Power (W)": "", "Max Scan Speed (m/s)": "10", "Min. Layer Height (µm)": "60", "Max Chamber Temp (°C)": "", "Atmosphere Control": "N/A", "Supported Materials": "PA 1100, PA 1101, PA 2200, PA 2201, PA 2210 FR, PA 2241 FR, PA 3200 GF, Alumide, EOS TPU 1301, ALM TPE 410", "Touchscreen": "N/A", "Max Power (W)": "12000", "EST Price (THB)": "N/A", "Release Year": "2016"}, {"Seller": "3D Systems", "Printer": "DMP Flex 350 Dual", "Technology Type": "SLM", "Build Length (mm)": "275", "Build Width (mm)": "275", "Build Height (mm)": "420", "Volume (L)": "31.7625", "Weight (kg)": "", "Laser Type": "Fiber", "Laser Power (W)": "", "Max Scan Speed (m/s)": "N/A", "Min. Layer Height (µm)": "5", "Max Chamber Temp (°C)": "", "Atmosphere Control": "Vacuum + Argon (<25 ppm O2)", "Supported Materials": "Ti alloys, Al alloys, 316L, CoCr, Maraging Steel, Ni alloys", "Touchscreen": "N/A", "Max Power (W)": "", "EST Price (THB)": "N/A", "Release Year": ""}]}</script>
+  <script id="meta-data" type="application/json">{"slug": "powder-printers", "name": "Powder 3D Printer", "title": "เครื่องพิมพ์ระบบผงเลเซอร์ (Powder 3D Printers - SLS/SLM)", "subtitle": "เครื่องพิมพ์อุตสาหกรรมและตั้งโต๊ะระบบหลอมผงด้วยเลเซอร์ (SLS / Direct Metal Laser Sintering)", "icon": "sparkles", "category": "เครื่องพิมพ์", "accent": "sky", "filter_cols": ["Seller", "Technology Type", "Laser Type"], "primary_cols": ["Seller", "Printer", "Technology Type", "Build Length (mm)", "Build Width (mm)", "Build Height (mm)", "Laser Type", "Laser Power (W)", "Supported Materials", "EST Price (THB)", "Release Year"]}</script>
+  <script src="../assets/common.js"></script>
+  <script>
+    const TAB_DATA = JSON.parse(document.getElementById('tab-data').textContent);
+    const META = JSON.parse(document.getElementById('meta-data').textContent);
+
+    renderWikiHeader(META.slug, false);
+
+    const allRows = TAB_DATA.data || [];
+    const allHeaders = TAB_DATA.headers || [];
+    const displayCols = (META.primary_cols && META.primary_cols.length > 0)
+      ? META.primary_cols.filter(c => allHeaders.includes(c))
+      : allHeaders.slice(0, 10);
+
+    // State
+    let searchQuery = '';
+    let activeFilters = {};
+    let sortCol = null;
+    let sortAsc = true;
+    let currentPage = 1;
+    let pageSize = 25;
+    let viewMode = 'table'; // 'table' | 'cards'
+    let filteredRows = [...allRows];
+
+    // Helper: parse number from string
+    function parseNum(val) {
+      if (val === null || val === undefined) return NaN;
+      const s = String(val).replace(/,/g, '').trim();
+      const m = s.match(/-?\d+(\.\d+)?/);
+      return m ? parseFloat(m[0]) : NaN;
+    }
+
+    // Build Stat Cards
+    function buildStats() {
+      const container = document.getElementById('stats-container');
+      const total = allRows.length;
+      
+      // Find first brand/seller/manufacturer column
+      const brandCol = ['Seller', 'Brand', 'Manufacturer', 'Material', 'Category', 'Stepper Motor Driver'].find(c => allHeaders.includes(c)) || allHeaders[0];
+      const uniqueBrands = new Set(allRows.map(r => (r[brandCol] || '').trim()).filter(Boolean)).size;
+
+      // Find price or numeric column
+      const priceCol = allHeaders.find(h => /price|thb/i.test(h));
+      let thirdStatLabel = 'คอลัมน์ข้อมูล (Specs)';
+      let thirdStatVal = allHeaders.length + ' รายการ';
+      if (priceCol) {
+        const prices = allRows.map(r => parseNum(r[priceCol])).filter(n => !isNaN(n) && n > 0);
+        if (prices.length > 0) {
+          const minP = Math.min(...prices).toLocaleString();
+          const maxP = Math.max(...prices).toLocaleString();
+          thirdStatLabel = 'ช่วงราคาโดยประมาณ (THB)';
+          thirdStatVal = `฿${minP} - ฿${maxP}`;
+        }
+      }
+
+      const typeCol = ['Motion Type', 'Technology Type', 'Materials Type', 'Interface', 'Size (NEMA)', 'Print Difficulty', 'Firmware'].find(c => allHeaders.includes(c));
+      let fourthLabel = 'สถานะฐานข้อมูล';
+      let fourthVal = 'อัปเดตล่าสุด 2026';
+      if (typeCol) {
+        const uniqueTypes = new Set(allRows.map(r => (r[typeCol] || '').trim()).filter(Boolean)).size;
+        fourthLabel = `ประเภท (${typeCol})`;
+        fourthVal = `${uniqueTypes} รูปแบบ`;
+      }
+
+      const stats = [
+        { label: 'จำนวนรายการทั้งหมด', val: total.toLocaleString() + ' รายการ', icon: 'database', color: 'text-cyan-400' },
+        { label: `จำนวน ${brandCol || 'กลุ่ม'}`, val: uniqueBrands.toLocaleString() + ' แบรนด์/ชนิด', icon: 'tag', color: 'text-indigo-400' },
+        { label: thirdStatLabel, val: thirdStatVal, icon: 'bar-chart-3', color: 'text-emerald-400' },
+        { label: fourthLabel, val: fourthVal, icon: 'sparkles', color: 'text-amber-400' }
+      ];
+
+      container.innerHTML = stats.map(s => `
+        <div class="bg-slate-900/70 border border-slate-800/90 rounded-xl p-3.5 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center ${s.color} flex-shrink-0">
+            <i data-lucide="${s.icon}" class="w-5 h-5"></i>
+          </div>
+          <div class="min-w-0">
+            <p class="text-[11px] text-slate-400 truncate">${s.label}</p>
+            <p class="text-sm sm:text-base font-bold text-white truncate">${s.val}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Build Filter Dropdowns
+    function buildFilters() {
+      const filterContainer = document.getElementById('dynamic-filters');
+      const cols = (META.filter_cols || []).filter(c => allHeaders.includes(c)).slice(0, 3);
+      
+      filterContainer.innerHTML = cols.map((col, idx) => {
+        const vals = Array.from(new Set(allRows.map(r => (r[col] || '').trim()).filter(Boolean))).sort();
+        return `
+          <select data-filter-col="${col.replace(/"/g, '&quot;')}" class="filter-select w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-3 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500 transition truncate">
+            <option value="">ทั้งหมด: ${col}</option>
+            ${vals.map(v => `<option value="${v.replace(/"/g, '&quot;')}">${v}</option>`).join('')}
+          </select>
+        `;
+      }).join('');
+
+      document.querySelectorAll('.filter-select').forEach(sel => {
+        sel.addEventListener('change', (e) => {
+          const col = e.target.getAttribute('data-filter-col');
+          activeFilters[col] = e.target.value;
+          currentPage = 1;
+          applyFiltersAndRender();
+        });
+      });
+    }
+
+    // Format cell value with smart badges
+    function formatCell(col, val) {
+      if (val === undefined || val === null || String(val).trim() === '' || val === '-') {
+        return '<span class="text-slate-600">-</span>';
+      }
+      const str = String(val).trim();
+
+      // URLs
+      if (/^https?:\/\//i.test(str)) {
+        return `<a href="${str}" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 text-xs font-medium transition">
+          <span>เปิดลิงก์</span> <i data-lucide="external-link" class="w-3 h-3"></i>
+        </a>`;
+      }
+
+      // Boolean / Yes-No
+      if (/^(yes|true|✔|✓|1)$/i.test(str) && /enclosed|touch|verified|cut|open|support|wifi|usb|sd|can|stealth|spread|cool|stall|1kg|2kg|3kg/i.test(col)) {
+        return '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">✔ รองรับ</span>';
+      }
+      if (/^(no|false|✘|✗|0)$/i.test(str) && /enclosed|touch|verified|cut|open|support|wifi|usb|sd|can|stealth|spread|cool|stall|1kg|2kg|3kg/i.test(col)) {
+        return '<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-800 text-slate-400">ไม่รองรับ</span>';
+      }
+
+      // Difficulty / Resistance badges
+      if (/^(easy|low)$/i.test(str)) {
+        return `<span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">${str}</span>`;
+      }
+      if (/^(medium)$/i.test(str)) {
+        return `<span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-500/15 text-amber-300 border border-amber-500/30">${str}</span>`;
+      }
+      if (/^(hard|high)$/i.test(str)) {
+        return `<span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-rose-500/15 text-rose-300 border border-rose-500/30">${str}</span>`;
+      }
+
+      // Motion Type / Tech Type pill
+      if (/motion type|technology type|materials type|interface/i.test(col)) {
+        return `<span class="px-2.5 py-0.5 rounded-lg text-xs font-medium bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 whitespace-nowrap">${str}</span>`;
+      }
+
+      // Price formatting
+      if (/price|thb/i.test(col)) {
+        const n = parseFloat(str.replace(/,/g, ''));
+        if (!isNaN(n) && /^\d+(\.\d+)?$/.test(str.replace(/,/g, ''))) {
+          return `<span class="font-semibold text-emerald-400 whitespace-nowrap">฿${n.toLocaleString()}</span>`;
+        }
+        return `<span class="font-medium text-emerald-400">${str}</span>`;
+      }
+
+      // Visual bar for Filament Properties temperatures & tensile strength
+      if (META.slug === 'filament-properties' && /temp|strength/i.test(col)) {
+        const n = parseNum(str);
+        const maxVal = /strength/i.test(col) ? 130 : 360;
+        if (!isNaN(n) && n > 0) {
+          const pct = Math.min(100, Math.max(8, Math.round((n / maxVal) * 100)));
+          const barColor = /strength/i.test(col) ? 'bg-rose-500' : 'bg-cyan-500';
+          return `
+            <div class="min-w-[90px]">
+              <div class="flex justify-between text-xs mb-1"><span class="font-semibold text-white">${str}</span></div>
+              <div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                <div class="${barColor} h-full rounded-full" style="width:${pct}%"></div>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      if (str.length > 65) {
+        return `<span title="${str.replace(/"/g, '&quot;')}" class="line-clamp-2 max-w-xs">${str}</span>`;
+      }
+      return str;
+    }
+
+    // Render Table Header
+    function renderTableHeader() {
+      const tr = document.getElementById('table-head-row');
+      tr.innerHTML = displayCols.map(col => {
+        const isSorted = sortCol === col;
+        const icon = isSorted ? (sortAsc ? 'arrow-up' : 'arrow-down') : 'arrow-up-down';
+        const activeClass = isSorted ? 'text-cyan-400 bg-slate-800/60' : 'hover:text-slate-200 hover:bg-slate-800/40';
+        return `
+          <th onclick="handleSort('${col.replace(/'/g, "\\'")}')" class="px-4 py-3.5 cursor-pointer transition whitespace-nowrap ${activeClass}">
+            <div class="flex items-center gap-1.5">
+              <span>${col}</span>
+              <i data-lucide="${icon}" class="w-3.5 h-3.5 ${isSorted ? 'text-cyan-400' : 'text-slate-600'}"></i>
+            </div>
+          </th>
+        `;
+      }).join('') + `<th class="px-4 py-3.5 text-right whitespace-nowrap">รายละเอียด</th>`;
+    }
+
+    window.handleSort = function(col) {
+      if (sortCol === col) {
+        sortAsc = !sortAsc;
+      } else {
+        sortCol = col;
+        sortAsc = true;
+      }
+      applyFiltersAndRender();
+    };
+
+    function applyFiltersAndRender() {
+      const q = searchQuery.toLowerCase().trim();
+      filteredRows = allRows.filter(row => {
+        // Check dropdown filters
+        for (const [col, val] of Object.entries(activeFilters)) {
+          if (val && String(row[col] || '').trim() !== val) return false;
+        }
+        // Check search query
+        if (!q) return true;
+        return Object.values(row).some(v => String(v || '').toLowerCase().includes(q));
+      });
+
+      // Check active filter badge
+      const hasFilter = q !== '' || Object.values(activeFilters).some(Boolean);
+      document.getElementById('active-filter-badge').classList.toggle('hidden', !hasFilter);
+
+      // Sort
+      if (sortCol) {
+        filteredRows.sort((a, b) => {
+          const va = a[sortCol] ?? '';
+          const vb = b[sortCol] ?? '';
+          const na = parseNum(va);
+          const nb = parseNum(vb);
+          if (!isNaN(na) && !isNaN(nb)) {
+            return sortAsc ? na - nb : nb - na;
+          }
+          return sortAsc
+            ? String(va).localeCompare(String(vb), 'th')
+            : String(vb).localeCompare(String(va), 'th');
+        });
+      }
+
+      // Counts
+      document.getElementById('total-count').textContent = allRows.length.toLocaleString();
+      document.getElementById('showing-count').textContent = filteredRows.length.toLocaleString();
+
+      // Empty state
+      const isEmpty = filteredRows.length === 0;
+      document.getElementById('empty-state').classList.toggle('hidden', !isEmpty);
+      document.getElementById('table-view-container').classList.toggle('hidden', isEmpty || viewMode !== 'table');
+      document.getElementById('cards-view-container').classList.toggle('hidden', isEmpty || viewMode !== 'cards');
+
+      // Slice page
+      const totalPages = Math.max(1, Math.ceil(filteredRows.length / pageSize));
+      if (currentPage > totalPages) currentPage = totalPages;
+      const startIdx = (currentPage - 1) * pageSize;
+      const pageItems = filteredRows.slice(startIdx, startIdx + pageSize);
+
+      renderTableHeader();
+
+      if (viewMode === 'table') {
+        const tbody = document.getElementById('table-body');
+        tbody.innerHTML = pageItems.map((row, idx) => {
+          const globalIdx = allRows.indexOf(row);
+          return `
+            <tr onclick="openModal(${globalIdx})" class="hover:bg-slate-800/50 transition cursor-pointer group">
+              ${displayCols.map((col, cIdx) => `
+                <td class="px-4 py-3 ${cIdx <= 1 ? 'font-medium text-white' : 'text-slate-300'}">
+                  ${formatCell(col, row[col])}
+                </td>
+              `).join('')}
+              <td class="px-4 py-3 text-right whitespace-nowrap">
+                <button onclick="event.stopPropagation(); openModal(${globalIdx})" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-800 group-hover:bg-cyan-500/20 text-slate-300 group-hover:text-cyan-300 border border-slate-700 group-hover:border-cyan-500/40 text-xs transition">
+                  <i data-lucide="maximize-2" class="w-3 h-3"></i> ดูสเปก
+                </button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      } else {
+        const grid = document.getElementById('cards-view-container');
+        grid.innerHTML = pageItems.map(row => {
+          const globalIdx = allRows.indexOf(row);
+          const titleCol = displayCols[1] || displayCols[0];
+          const subCol = displayCols[0];
+          const restCols = displayCols.slice(2, 8);
+          return `
+            <div onclick="openModal(${globalIdx})" class="glass-card rounded-2xl p-5 hover:border-cyan-500/50 transition cursor-pointer flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="text-xs font-semibold text-cyan-400 uppercase tracking-wider">${row[subCol] || '-'}</span>
+                  <span class="text-[11px] text-slate-500">#${globalIdx + 1}</span>
+                </div>
+                <h3 class="text-base font-bold text-white group-hover:text-cyan-300 transition mb-4">${row[titleCol] || '-'}</h3>
+                <div class="space-y-2 border-t border-slate-800/80 pt-3 text-xs">
+                  ${restCols.map(c => `
+                    <div class="flex items-center justify-between gap-2">
+                      <span class="text-slate-400 truncate">${c}:</span>
+                      <span class="text-slate-200 font-medium text-right">${formatCell(c, row[c])}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-800/60 flex justify-end">
+                <span class="text-xs text-cyan-400 group-hover:underline flex items-center gap-1">
+                  ดูสเปกทั้งหมด (${allHeaders.length} รายการ) <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </span>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      renderPagination(filteredRows.length, totalPages);
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function renderPagination(totalItems, totalPages) {
+      const info = document.getElementById('page-info');
+      const btns = document.getElementById('page-buttons');
+      if (totalItems === 0) {
+        info.textContent = '';
+        btns.innerHTML = '';
+        return;
+      }
+      const start = (currentPage - 1) * pageSize + 1;
+      const end = Math.min(totalItems, currentPage * pageSize);
+      info.textContent = `หน้า ${currentPage} จาก ${totalPages} (รายการที่ ${start} - ${end})`;
+
+      if (totalPages <= 1) {
+        btns.innerHTML = '';
+        return;
+      }
+
+      let htmlBtns = '';
+      htmlBtns += `<button onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:pointer-events-none text-xs text-slate-200 border border-slate-700 transition">ก่อนหน้า</button>`;
+
+      const maxButtons = 5;
+      let startP = Math.max(1, currentPage - 2);
+      let endP = Math.min(totalPages, startP + maxButtons - 1);
+      if (endP - startP < maxButtons - 1) startP = Math.max(1, endP - maxButtons + 1);
+
+      for (let p = startP; p <= endP; p++) {
+        const active = p === currentPage;
+        htmlBtns += `<button onclick="goToPage(${p})" class="w-8 h-8 rounded-lg text-xs font-semibold transition ${active ? 'bg-cyan-500 text-slate-950' : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700'}">${p}</button>`;
+      }
+
+      htmlBtns += `<button onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:pointer-events-none text-xs text-slate-200 border border-slate-700 transition">ถัดไป</button>`;
+      btns.innerHTML = htmlBtns;
+    }
+
+    window.goToPage = function(p) {
+      currentPage = p;
+      applyFiltersAndRender();
+      window.scrollTo({ top: 260, behavior: 'smooth' });
+    };
+
+    window.openModal = function(idx) {
+      const row = allRows[idx];
+      if (!row) return;
+      const title = (row[displayCols[0]] ? row[displayCols[0]] + ' — ' : '') + (row[displayCols[1]] || '');
+      document.getElementById('modal-title').textContent = title || 'รายละเอียดสเปก';
+      
+      const body = document.getElementById('modal-body');
+      body.innerHTML = `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          ${allHeaders.map(h => `
+            <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-3">
+              <div class="text-[11px] text-slate-400 mb-1">${h}</div>
+              <div class="text-sm font-medium text-white break-words">${formatCell(h, row[h])}</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      const modal = document.getElementById('detail-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      if (window.lucide) window.lucide.createIcons();
+    };
+
+    window.closeModal = function() {
+      const modal = document.getElementById('detail-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    };
+
+    window.resetAllFilters = function() {
+      searchQuery = '';
+      activeFilters = {};
+      sortCol = null;
+      currentPage = 1;
+      document.getElementById('search-input').value = '';
+      document.getElementById('clear-search').classList.add('hidden');
+      document.querySelectorAll('.filter-select').forEach(s => s.value = '');
+      applyFiltersAndRender();
+    };
+
+    // Event Listeners
+    document.getElementById('search-input').addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      document.getElementById('clear-search').classList.toggle('hidden', !searchQuery);
+      currentPage = 1;
+      applyFiltersAndRender();
+    });
+
+    document.getElementById('clear-search').addEventListener('click', () => {
+      searchQuery = '';
+      document.getElementById('search-input').value = '';
+      document.getElementById('clear-search').classList.add('hidden');
+      currentPage = 1;
+      applyFiltersAndRender();
+    });
+
+    document.getElementById('page-size').addEventListener('change', (e) => {
+      pageSize = parseInt(e.target.value, 10) || 25;
+      currentPage = 1;
+      applyFiltersAndRender();
+    });
+
+    document.getElementById('btn-view-table').addEventListener('click', () => {
+      viewMode = 'table';
+      document.getElementById('btn-view-table').className = 'px-2.5 py-1.5 rounded-lg text-xs font-medium bg-cyan-500/20 text-cyan-300 flex items-center gap-1 transition';
+      document.getElementById('btn-view-cards').className = 'px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white flex items-center gap-1 transition';
+      applyFiltersAndRender();
+    });
+
+    document.getElementById('btn-view-cards').addEventListener('click', () => {
+      viewMode = 'cards';
+      document.getElementById('btn-view-cards').className = 'px-2.5 py-1.5 rounded-lg text-xs font-medium bg-cyan-500/20 text-cyan-300 flex items-center gap-1 transition';
+      document.getElementById('btn-view-table').className = 'px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white flex items-center gap-1 transition';
+      applyFiltersAndRender();
+    });
+
+    document.getElementById('btn-reset').addEventListener('click', resetAllFilters);
+
+    document.getElementById('detail-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'detail-modal') closeModal();
+    });
+
+    // Init
+    buildStats();
+    buildFilters();
+    applyFiltersAndRender();
+  </script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+{
+  "name": "Useful Link",
+  "slug": "useful-links",
+  "title": "ลิงก์และแหล่งข้อมูลที่เป็นประโยชน์",
+  "headers": [
+    "Category",
+    "Source Name",
+    "Description",
+    "URL"
+  ],
+  "total_rows": 55,
+  "data": [
+    {
+      "Category": "Review Websites",
+      "Source Name": "All3DP",
+      "Description": "เว็บไซต์รีวิวและข่าวสารเกี่ยวกับเครื่องพิมพ์ 3 มิติ",
+      "URL": "https://all3dp.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "3Dprint.com",
+      "Description": "แหล่งรวมข่าวและบทความเกี่ยวกับการพิมพ์ 3 มิติ",
+      "URL": "https://3dprint.com"
+    },
+    {
+      "Category": "Calculation Tools",
+      "Source Name": "Calistar",
+      "Description": "เครื่องมือสำหรับปรับแก้ความคลาดเคลื่อนเชิงมิติและการบิดเอียงของเครื่องพิมพ์",
+      "URL": "https://github.com/dirtdigger/fleur_de_cali"
+    },
+    {
+      "Category": "",
+      "Source Name": "Filament Density Calculator",
+      "Description": "เครื่องมือออนไลน์สำหรับคำนวณความหนาแน่นของเส้นพลาสติก (Filament)",
+      "URL": "http://www.cymrusoft.co.uk/filamentdensitycalculator.html"
+    },
+    {
+      "Category": "",
+      "Source Name": "Filament Length Calculator",
+      "Description": "เครื่องมือออนไลน์สำหรับคำนวณความยาวและน้ำหนักของเส้นพลาสติก",
+      "URL": "https://www.threedoo.com/tutorial/filament-length-calculator"
+    },
+    {
+      "Category": "",
+      "Source Name": "Filament length to weight",
+      "Description": "เครื่องมือออนไลน์สำหรับคำนวณความยาวและน้ำหนักของเส้นพลาสติก",
+      "URL": "https://jscalc.io/calc/d5QSiH4XwUIiiBmb"
+    },
+    {
+      "Category": "",
+      "Source Name": "Remaining filament calculator",
+      "Description": "เครื่องมือออนไลน์สำหรับคำนวณความยาวเส้นพลาสติกที่เหลืออยู่",
+      "URL": "https://jscalc.io/calc/1Cj6c1zxnr4q8Tzw"
+    },
+    {
+      "Category": "",
+      "Source Name": "OnlySpoolz",
+      "Description": "เว็บรวมน้ำหนักแกนม้วนเปล่า",
+      "URL": "https://www.onlyspoolz.com/portfolio/"
+    },
+    {
+      "Category": "3D Printing Pricing Template",
+      "Source Name": "2000AJM",
+      "Description": "เทมเพลตเก่าเมื่อ 5 ปีที่แล้ว สำหรับคำนวณราคาพิมพ์ 3 มิติ",
+      "URL": "https://docs.google.com/spreadsheets/d/1aoCZQ0xTRgdV73QDzXw3isZI8RETw-cfNLq7TFOTdfg/edit?gid=2016986878#gid=2016986878"
+    },
+    {
+      "Category": "",
+      "Source Name": "Halvorson.Design",
+      "Description": "เทมเพลตคำนวณราคาพิมพ์ 3 มิติ",
+      "URL": "https://halvorson.design/3d-printing-pricing-template/"
+    },
+    {
+      "Category": "Filament Calibration",
+      "Source Name": "Creality Wiki",
+      "Description": "บทเรียนการปรับแต่ง (Calibration Tutorial)",
+      "URL": "https://wiki.creality.com/en/software/update-released/Basic-introduction/calibration-tutorial"
+    },
+    {
+      "Category": "",
+      "Source Name": "Orca Slicer Calibration Suite",
+      "Description": "ตัวช่วยคู่มือการปรับแต่ง (Calibration Guide Helper)",
+      "URL": "https://calibration-tool-ivory.vercel.app/"
+    },
+    {
+      "Category": "",
+      "Source Name": "BambuLAB wiki",
+      "Description": "การปรับค่า Flow Rate",
+      "URL": "https://wiki.bambulab.com/en/software/bambu-studio/calibration_flow_rate"
+    },
+    {
+      "Category": "",
+      "Source Name": "OrcaSlicer",
+      "Description": "การปรับแต่งเครื่องพิมพ์ (Calibration)",
+      "URL": "https://github.com/SoftFever/OrcaSlicer/wiki/Calibration"
+    },
+    {
+      "Category": "",
+      "Source Name": "Filatrack",
+      "Description": "เครื่องมือที่ช่วยบริหารจัดการคลังเส้น Filament",
+      "URL": "https://filatrack.app/app/filament"
+    },
+    {
+      "Category": "YouTube Channels",
+      "Source Name": "Thomas Sanladerer",
+      "Description": "ช่องรีวิวและเทคนิคการใช้งานเครื่องพิมพ์ 3 มิติอย่างละเอียด",
+      "URL": "https://www.youtube.com/user/ThomasSanladerer"
+    },
+    {
+      "Category": "",
+      "Source Name": "Maker's Muse",
+      "Description": "ช่องรีวิวและคำแนะนำเกี่ยวกับการใช้งานและออกแบบเครื่องพิมพ์ 3 มิติ",
+      "URL": "https://www.youtube.com/user/TheMakersMuse"
+    },
+    {
+      "Category": "",
+      "Source Name": "DIY of Things",
+      "Description": "ช่องนำเสนอโปรเจกต์ DIY ด้วยเครื่องพิมพ์ 3 มิติ รวมถึงรีวิวและเทคนิค",
+      "URL": "https://www.youtube.com/@DIYofThings"
+    },
+    {
+      "Category": "",
+      "Source Name": "MakerStation",
+      "Description": "ช่องเล่าประสบการณ์การเป็น Maker การสร้างโปรเจกต์ และรีวิวเครื่องมือ รวมถึงเครื่องพิมพ์ 3 มิติ",
+      "URL": "https://www.youtube.com/@MakerStation"
+    },
+    {
+      "Category": "",
+      "Source Name": "3D Printing Nerd",
+      "Description": "ช่องรีวิว ทดลอง และเทคนิคที่เกี่ยวกับการพิมพ์ 3 มิติ",
+      "URL": "https://www.youtube.com/@3DPrintingNerd"
+    },
+    {
+      "Category": "",
+      "Source Name": "Uncle Jessy",
+      "Description": "ช่องเน้นการพิมพ์ 3 มิติแนวซูเปอร์ฮีโร่ รีวิวเครื่องพิมพ์เรซิน และเทคนิคการพิมพ์",
+      "URL": "https://www.youtube.com/@UncleJessy"
+    },
+    {
+      "Category": "",
+      "Source Name": "CNC Kitchen",
+      "Description": "ช่องทดสอบและรีวิวอุปกรณ์เสริมเครื่องพิมพ์ 3 มิติ พร้อมข้อมูลเชิงสถิติ",
+      "URL": "https://www.youtube.com/@CNCKitchen"
+    },
+    {
+      "Category": "",
+      "Source Name": "Make Anything",
+      "Description": "ช่องโชว์ผลงานที่สร้างด้วยเครื่องพิมพ์ 3 มิติ พร้อมรีวิวและเทคนิคการใช้งาน",
+      "URL": "https://www.youtube.com/@MakeAnything"
+    },
+    {
+      "Category": "Additional Articles",
+      "Source Name": "Siamreprap",
+      "Description": "บทความวิธีเลือกและใช้งานเส้นพลาสติกสำหรับเครื่องพิมพ์ 3 มิติ",
+      "URL": "https://www.siamreprap.com/2020/01/how-to-select-3d-filament-for-3d-printer/"
+    },
+    {
+      "Category": "",
+      "Source Name": "Siamreprap",
+      "Description": "บทความวิธีเพิ่มความเร็วในการพิมพ์สำหรับเครื่อง FDM",
+      "URL": "https://www.siamreprap.com/2022/08/how-to-increase-print-speed-fdm-3d-printer/"
+    },
+    {
+      "Category": "",
+      "Source Name": "Sync Innovation",
+      "Description": "คู่มือแก้ปัญหาทั่วไปของเครื่องพิมพ์ FDM 3 มิติ",
+      "URL": "https://www.sync-innovation.com/troubleshooting/problem-fdm-3d-printer/"
+    },
+    {
+      "Category": "",
+      "Source Name": "Sync Innovation",
+      "Description": "คู่มือแก้ปัญหาทั่วไปของเครื่องพิมพ์ LCD 3 มิติ",
+      "URL": "https://www.sync-innovation.com/troubleshooting/problem-lcd-3d-printer/"
+    },
+    {
+      "Category": "",
+      "Source Name": "Ultimaker",
+      "Description": "เครื่องมือที่จำเป็นสำหรับมืออาชีพด้านการพิมพ์ 3 มิติ",
+      "URL": "https://ultimaker.com/learn/essential-tools-for-every-3d-printing-professional/"
+    },
+    {
+      "Category": "",
+      "Source Name": "Sync Innovation",
+      "Description": "12 ปัญหางานพิมพ์เสียของเครื่อง FDM 3D Printer และวิธีแก้ไข",
+      "URL": "https://www.sync-innovation.com/troubleshooting/problem-fdm-3d-printer/"
+    },
+    {
+      "Category": "",
+      "Source Name": "Sync Innovation",
+      "Description": "12 ปัญหางานพิมพ์เสียของเครื่อง LCD 3D Printer และวิธีแก้ไข",
+      "URL": "https://www.sync-innovation.com/troubleshooting/problem-lcd-3d-printer/"
+    },
+    {
+      "Category": "",
+      "Source Name": "Creality K1 Series Master Directory",
+      "Description": "รวมอะไหล่+อัพเกรดเครื่องพิมพ์ Creality K series",
+      "URL": "https://docs.google.com/spreadsheets/d/1lo7YX4nkfYGhhncVtIryOvbDM4tTaRjzZT0Y3F5O7gI"
+    },
+    {
+      "Category": "",
+      "Source Name": "klipper_canbus",
+      "Description": "CANBUS TOOLHEAD INSTALL",
+      "URL": "https://maz0r.github.io/klipper_canbus/"
+    },
+    {
+      "Category": "เว็บไฟล์โมเดลสามมิติ",
+      "Source Name": "Thingiverse",
+      "Description": "คลังไฟล์โมเดล 3D ฟรีขนาดใหญ่ ใช้งานได้ยาวนาน",
+      "URL": "https://www.thingiverse.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "Printables (Prusa)",
+      "Description": "ชุมชนแบ่งปันไฟล์ STL/3MF คุณภาพสูงจาก Prusa",
+      "URL": "https://www.printables.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "MakerWorld (Bambu)",
+      "Description": "แพลตฟอร์มใหม่จาก Bambu Lab เน้นงานใช้งานจริงและโมเดลคุณภาพ",
+      "URL": "https://makerworld.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "CrealityCloud (Creality)",
+      "Description": "รวมไฟล์โมเดลจากทาง Creality และเครื่องพิมพ์ที่เกี่ยวข้อง",
+      "URL": "https://www.crealitycloud.com/"
+    },
+    {
+      "Category": "",
+      "Source Name": "MyMiniFactory",
+      "Description": "รวมไฟล์โมเดลจากนักออกแบบมืออาชีพและงานเชิงศิลปะ",
+      "URL": "https://www.myminifactory.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "Cults3D",
+      "Description": "ตลาดขายไฟล์โมเดล 3D ทั้งฟรีและเสียเงิน",
+      "URL": "https://cults3d.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "Pinshape",
+      "Description": "คลังไฟล์โมเดลฟรีและพรีเมียม พร้อมรีวิวจากผู้ใช้",
+      "URL": "https://pinshape.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "Yeggi",
+      "Description": "เว็บค้นหาไฟล์โมเดล 3D จากหลายแหล่งในที่เดียว",
+      "URL": "https://yeggi.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "STLFinder",
+      "Description": "เสิร์ชเอนจิ้นค้นหาไฟล์ STL จากหลายเว็บไซต์",
+      "URL": "https://www.stlfinder.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "Thangs",
+      "Description": "แพลตฟอร์มค้นหา+แชร์โมเดล 3D มีระบบวิเคราะห์โมเดล",
+      "URL": "https://thangs.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "GrabCAD",
+      "Description": "คลัง CAD files สำหรับงานวิศวกรรม/อุตสาหกรรม",
+      "URL": "https://grabcad.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "Free3D",
+      "Description": "เว็บไซต์รวมไฟล์ 3D หลากหลาย format",
+      "URL": "https://free3d.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "CGTrader",
+      "Description": "ตลาดซื้อขายไฟล์โมเดล 3D ทั้งงาน print และงาน 3D graphics",
+      "URL": "https://www.cgtrader.com"
+    },
+    {
+      "Category": "เว็บไฟล์โมเดลสามมิติ     (สายโมเดล)",
+      "Source Name": "Sketchfab",
+      "Description": "เว็บรวมโมเดล 3D หลากหลาย ทั้งฟรีและขาย มี preview แบบ 3D viewer",
+      "URL": "https://sketchfab.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "TurboSquid",
+      "Description": "Marketplace ขายโมเดล 3D คุณภาพสูง สำหรับงานเกม/อนิเมชัน",
+      "URL": "https://www.turbosquid.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "CGTrader",
+      "Description": "ตลาดซื้อขายโมเดล 3D ทั้งสายงาน render และพิมพ์สามมิติ",
+      "URL": "https://www.cgtrader.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "Free3D",
+      "Description": "โมเดลฟรีหลากหลาย format เหมาะกับ Blender, Maya, 3ds Max",
+      "URL": "https://free3d.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "Blend Swap",
+      "Description": "ชุมชนแชร์ไฟล์ .blend สำหรับ Blender ฟรีทั้งหมด",
+      "URL": "https://www.blendswap.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "Clara.io",
+      "Description": "Online 3D editor + library โมเดลฟรี",
+      "URL": "https://clara.io"
+    },
+    {
+      "Category": "",
+      "Source Name": "OpenGameArt",
+      "Description": "ฐานข้อมูล asset ฟรีสำหรับเกม ทั้ง 2D/3D/เสียง",
+      "URL": "https://opengameart.org"
+    },
+    {
+      "Category": "",
+      "Source Name": "3DExport",
+      "Description": "ตลาดขายโมเดล 3D (เกม, animation, printing)",
+      "URL": "https://3dexport.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "Hum3D",
+      "Description": "โมเดลเชิงพาณิชย์คุณภาพสูง เช่น รถ, มือถือ, ของใช้",
+      "URL": "https://hum3d.com"
+    },
+    {
+      "Category": "",
+      "Source Name": "KitBash3D",
+      "Description": "รวม asset ชุดใหญ่สำหรับทำฉาก/สถาปัตยกรรม เหมาะกับสาย concept art",
+      "URL": "https://kitbash3d.com"
+    }
+  ]
+}

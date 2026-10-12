@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="th" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ข้อมูลติดต่อ (Contact & Community) | 3D Printing Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', 'Noto Sans Thai', sans-serif; background-color: #0b0f19; color: #e2e8f0; }
+    .glass-card { background: rgba(15, 23, 42, 0.78); backdrop-filter: blur(12px); border: 1px solid rgba(51, 65, 85, 0.6); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <div id="header-mount"></div>
+  <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="glass-card rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden mb-8">
+      <div class="w-16 h-16 rounded-2xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center mx-auto mb-4 text-cyan-400">
+        <i data-lucide="mail" class="w-8 h-8"></i>
+      </div>
+      <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">Tab 16: Contact & Contribution</span>
+      <h1 class="text-3xl font-bold text-white mt-3">ติดต่อผู้จัดทำ & ชุมชน 3D Printing</h1>
+      <p class="text-slate-400 max-w-xl mx-auto mt-2 text-sm sm:text-base">
+        หากต้องการแจ้งเพิ่มรุ่นเครื่องพิมพ์ อัปเดตสเปกวัสดุ หรือแจ้งแก้ไขข้อมูลใน 3D Printer Thailand Master List สามารถติดต่อได้ตามช่องทางด้านล่างครับ
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 text-left">
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-3">
+              <div class="p-2.5 rounded-xl bg-cyan-500/15 text-cyan-400"><i data-lucide="at-sign" class="w-5 h-5"></i></div>
+              <div>
+                <div class="text-xs text-slate-400">อีเมลผู้จัดทำ (Compiled by Terasit J.)</div>
+                <div class="text-base font-bold text-white">blazelabshop@gmail.com</div>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              ติดต่อสอบถาม ส่งข้อมูลสเปกเครื่องพิมพ์ 3 มิติ แผงวงจร หรือรายการเส้นพลาสติกเพิ่มเติมเข้าสู่ฐานข้อมูลหลัก
+            </p>
+          </div>
+          <div class="mt-5 flex items-center gap-2">
+            <a href="mailto:blazelabshop@gmail.com" class="px-4 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs transition inline-flex items-center gap-1.5">
+              <i data-lucide="send" class="w-3.5 h-3.5"></i> ส่งอีเมล
+            </a>
+            <button onclick="navigator.clipboard.writeText('blazelabshop@gmail.com'); this.textContent='คัดลอกแล้ว!';" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium transition">
+              คัดลอกอีเมล
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-3">
+              <div class="p-2.5 rounded-xl bg-indigo-500/15 text-indigo-400"><i data-lucide="github" class="w-5 h-5"></i></div>
+              <div>
+                <div class="text-xs text-slate-400">GitHub Repository & Open Data</div>
+                <div class="text-base font-bold text-white">3d-printing-knowledge-wiki</div>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              ร่วมพัฒนาหน้าเว็บ Wiki เปิด Issue หรือส่ง Pull Request เพื่อเพิ่มเติมฟีเจอร์และอัปเดตข้อมูลบน GitHub
+            </p>
+          </div>
+          <div class="mt-5 flex items-center gap-2">
+            <a href="https://github.com/apiwat59/3d-printing-knowledge-wiki" target="_blank" class="px-4 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-semibold text-xs transition inline-flex items-center gap-1.5">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i> เปิด GitHub Repo
+            </a>
+            <a href="./useful-links.html" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium transition">
+              ดูรวมลิงก์ชุมชน
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-mount"></div>
+  <script src="../assets/common.js"></script>
+  <script>renderWikiHeader('contact', false);</script>
+</body>
+</html>

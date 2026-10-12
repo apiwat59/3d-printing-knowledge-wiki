@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สารบัญและภาพรวมข้อมูล (Master List Overview) | 3D Printing Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', 'Noto Sans Thai', sans-serif; background-color: #0b0f19; color: #e2e8f0; }
+    .glass-card { background: rgba(15, 23, 42, 0.78); backdrop-filter: blur(12px); border: 1px solid rgba(51, 65, 85, 0.6); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <div id="header-mount"></div>
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="glass-card rounded-2xl p-6 sm:p-8 mb-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">Tab 1: Sheets Overview</span>
+          <h1 class="text-2xl sm:text-3xl font-bold text-white mt-2">สารบัญและรายละเอียดชีตทั้งหมด (Master List Sheets)</h1>
+          <p class="text-slate-400 text-sm mt-1">รวบรวมและจัดทำข้อมูลต้นฉบับโดย <span class="text-cyan-300 font-semibold">Terasit J.</span> สำหรับชุมชน 3D Printer ประเทศไทย</p>
+        </div>
+        <a href="../data/overview.csv" download="overview.csv" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium transition self-start">
+          <i data-lucide="download" class="w-4 h-4 text-cyan-400"></i> ดาวน์โหลด CSV
+        </a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+      <div class="lg:col-span-2 glass-card rounded-2xl overflow-hidden">
+        <div class="px-6 py-4 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+          <h2 class="font-bold text-white flex items-center gap-2"><i data-lucide="list" class="w-4 h-4 text-cyan-400"></i> ตารางสารบัญจาก Google Sheet ต้นฉบับ</h2>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="bg-slate-900/60 border-b border-slate-800 text-xs text-slate-400 uppercase">
+                <th class="px-4 py-3">ชื่อชีต (Sheet Name)</th>
+                <th class="px-4 py-3">คำอธิบาย (Description)</th>
+                <th class="px-4 py-3 text-right">ลิงก์ไปยังหน้าเว็บ</th>
+              </tr>
+            </thead>
+            <tbody id="overview-tbody" class="divide-y divide-slate-800/60"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="glass-card rounded-2xl p-6">
+          <h3 class="font-bold text-white flex items-center gap-2 mb-4">
+            <i data-lucide="coins" class="w-4 h-4 text-amber-400"></i> อัตราแลกเปลี่ยนอ้างอิงในชีต
+          </h3>
+          <p class="text-xs text-slate-400 mb-4">ใช้สำหรับคำนวณราคาประเมิน (EST Price THB) ในตารางเครื่องพิมพ์และอุปกรณ์</p>
+          <div id="currency-list" class="space-y-2.5 text-sm"></div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6">
+          <h3 class="font-bold text-white flex items-center gap-2 mb-3">
+            <i data-lucide="info" class="w-4 h-4 text-cyan-400"></i> เกี่ยวกับโปรเจกต์นี้
+          </h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            เว็บไซต์นี้แปลงข้อมูลจาก 3D Printer Thailand Master List ทั้ง 16 แท็บให้อยู่ในรูปแบบ Interactive Wiki ที่ค้นหา กรอง และเปรียบเทียบสเปกได้ทันทีผ่านเบราว์เซอร์
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-mount"></div>
+  <script id="tab-data" type="application/json">{"name": "Sheets", "slug": "overview", "title": "ภาพรวมและสารบัญชีต", "headers": ["3D Printer Master List", "Compiled By Terasit J."], "total_rows": 26, "data": [{"3D Printer Master List": "Sheets", "Compiled By Terasit J.": "Description"}, {"3D Printer Master List": "FDM/FFF 3D Printer", "Compiled By Terasit J.": "List of Material Extrude 3D Printer"}, {"3D Printer Master List": "DIY 3D Printer", "Compiled By Terasit J.": "List of Custom 3D Printer"}, {"3D Printer Master List": "Boards", "Compiled By Terasit J.": "List of Custom 3D Printer And CNC Electronics"}, {"3D Printer Master List": "StepDriver", "Compiled By Terasit J.": "List of Stepper Motor Driver"}, {"3D Printer Master List": "MMS", "Compiled By Terasit J.": "List of MMS (Multi-Materials System)"}, {"3D Printer Master List": "Resin 3D Printer", "Compiled By Terasit J.": "List of all Resin 3D Printer (SLA , DLP )"}, {"3D Printer Master List": "Powder 3D Printer", "Compiled By Terasit J.": "List of SLS,SLM,MJF 3D Printer"}, {"3D Printer Master List": "Filament", "Compiled By Terasit J.": "List of popular Filament in Thailand"}, {"3D Printer Master List": "Filament Material Properties", "Compiled By Terasit J.": "List of popular Filament in Thailand"}, {"3D Printer Master List": "Filament Dryer", "Compiled By Terasit J.": "List of Filament Dryer"}, {"3D Printer Master List": "Resin", "Compiled By Terasit J.": "List of popular Resin in Thailand"}, {"3D Printer Master List": "Useful Link", "Compiled By Terasit J.": "List of useful link about 3d printing."}, {"3D Printer Master List": "Discord", "Compiled By Terasit J.": "Join the Discord server now to get the latest updates on this spreadsheet."}, {"3D Printer Master List": "Contact", "Compiled By Terasit J.": "Creator Contact."}, {"3D Printer Master List": "Please feel free to add any comments or suggestions for new filaments/printers or mistakes in the spreadsheet", "Compiled By Terasit J.": ""}, {"3D Printer Master List": "ถ้าต้องการแนะนำ Filament หรือ 3DPrinter รุ่นอื่น ๆ หรือ พบเจอข้อผิดพลาดในชีตนี้ สามารถ Comment มาได้เลยครับ", "Compiled By Terasit J.": ""}, {"3D Printer Master List": "If you would like to support me:           https://tipme.in.th/icezaza", "Compiled By Terasit J.": ""}, {"3D Printer Master List": "Other links, spreadsheets and websites (credit to the owners of these links, sheets and websites):", "Compiled By Terasit J.": ""}, {"3D Printer Master List": "Bambu Spool List", "Compiled By Terasit J.": "List of BambuLab Compatible Filament Spool"}, {"3D Printer Master List": "Creality K1 Master", "Compiled By Terasit J.": "List of Creality K1 Parts and Upgrade"}, {"3D Printer Master List": "Bambu Lab GTIN Tracker", "Compiled By Terasit J.": "Global Trade Item Number of BambuLab Parts"}, {"3D Printer Master List": "Bambu Studio Presets", "Compiled By Terasit J.": "H2D Presets"}, {"3D Printer Master List": "Bambu X1/P1/A1 Purge Values", "Compiled By Terasit J.": "Purge Values for MultiColor Print"}, {"3D Printer Master List": "Filaments 3-pagers", "Compiled By Terasit J.": "BambuLab Filament in 3 pages"}, {"3D Printer Master List": "Print-Tuing-Guide", "Compiled By Terasit J.": "Printer Tuning Guide"}]}</script>
+  <script id="tabs-meta" type="application/json">[{"slug": "overview", "name": "Sheets", "title": "สารบัญและภาพรวมข้อมูล (Master List Overview)", "subtitle": "รายละเอียดโครงสร้างข้อมูลทั้งหมดใน 3D Printer Thailand Master List รวบรวมโดย Terasit J.", "icon": "file-text", "category": "ทั่วไป", "accent": "cyan", "filter_cols": [], "primary_cols": ["3D Printer Master List", "Compiled By Terasit J.", "Currency", "Value"]}, {"slug": "fdm-printers", "name": "FDM 3D Printer", "title": "เครื่องพิมพ์ FDM 3D Printer", "subtitle": "ฐานข้อมูลสเปกเครื่องพิมพ์ 3 มิติระบบฉีดเส้นพลาสติก (FDM/FFF) กว่า 216 รุ่น เปรียบเทียบขนาด ความเร็ว และราคา", "icon": "box", "category": "เครื่องพิมพ์", "accent": "cyan", "filter_cols": ["Seller", "Motion Type", "Enclosed", "Support MultiMaterial System"], "primary_cols": ["Seller", "Printer", "Motion Type", "Build Length (mm)", "Build Width (mm)", "Build Height (mm)", "Volume (L)", "Speed (mm/s)", "HotEnd Max Temp (°C)", "Enclosed", "EST Price (THB)", "Release Year"]}, {"slug": "fdm-tool-changer", "name": "FDM Tool Changer", "title": "เครื่องพิมพ์ FDM Tool Changer", "subtitle": "เครื่องพิมพ์ 3 มิติระบบสลับหัวพิมพ์ (Multiple Toolheads / IDEX / Toolchanger) สำหรับงานพิมพ์หลายวัสดุขั้นสูง", "icon": "layers", "category": "เครื่องพิมพ์", "accent": "indigo", "filter_cols": ["Seller", "Motion Type", "ToolsHead"], "primary_cols": ["Seller", "Printer", "Motion Type", "ToolsHead", "Build Length (mm)", "Build Width (mm)", "Build Height (mm)", "Speed (mm/s)", "HotEnd Max Temp (°C)", "EST Price (THB)", "Release Year"]}, {"slug": "fdm-diy", "name": "FDM DIY", "title": "เครื่องพิมพ์ FDM DIY & Open-Source Kits", "subtitle": "รวบรวมโปรเจกต์เครื่องพิมพ์ 3D สายประกอบเอง (Voron, RatRig, HevORT, Rook, Prusa Bear ฯลฯ)", "icon": "wrench", "category": "เครื่องพิมพ์", "accent": "amber", "filter_cols": ["Seller", "Motion Type", "Enclosed"], "primary_cols": ["Seller", "Printer", "Motion Type", "Build Length (mm)", "Build Width (mm)", "Build Height (mm)", "Speed (mm/s)", "HotEnd Max Temp (C)", "Enclosed", "Current Price (THB)", "Links"]}, {"slug": "boards", "name": "Boards", "title": "เมนบอร์ดควบคุม (Controller Boards)", "subtitle": "เปรียบเทียบสเปกบอร์ดควบคุมเครื่องพิมพ์ 3 มิติ ชิปประมวลผล CPU, จำนวนไดรเวอร์, CAN Bus และรองรับ Klipper/Marlin/RRF", "icon": "cpu", "category": "ฮาร์ดแวร์", "accent": "emerald", "filter_cols": ["Brand", "Firmware", "CAN Bus", "Wifi"], "primary_cols": ["Brand", "Name", "CPU", "StepperMotor Drivers", "Voltage", "CAN Bus", "Firmware", "Wifi", "Estimated Price"]}, {"slug": "step-driver", "name": "StepDriver", "title": "ไดรเวอร์มอเตอร์ (Stepper Motor Drivers)", "subtitle": "ข้อมูลทางเทคนิคชิปและโมดูล Stepper Driver (TMC2209, TMC5160, TMC2240, A4988 ฯลฯ) กระแส แรงดัน และฟีเจอร์", "icon": "zap", "category": "ฮาร์ดแวร์", "accent": "yellow", "filter_cols": ["Interface", "stealthChop", "stallGuard"], "primary_cols": ["Stepper Motor Driver", "Interface", "Config", "Max Microstep", "Voltage (V)", "RMS Current (A)", "Peak Current (A)", "stealthChop", "stallGuard"]}, {"slug": "stepper-motor", "name": "StepperMotor", "title": "สเต็ปเปอร์มอเตอร์ (Stepper Motors)", "subtitle": "สเปกมอเตอร์สำหรับเครื่องพิมพ์ 3 มิติ ขนาด NEMA 14/17/23, Step Angle 0.9°/1.8°, แรงบิด Holding Torque และกระแสไฟ", "icon": "compass", "category": "ฮาร์ดแวร์", "accent": "blue", "filter_cols": ["Manufacturer", "Size (NEMA)", "Step Angle (°)"], "primary_cols": ["Manufacturer", "Model / Name", "Size (NEMA)", "Length (mm)", "Step Angle (°)", "Holding Torque (N.cm)", "Rated Current (A/Phase)", "Weight (g)", "Approx. Price", "Link"]}, {"slug": "mms", "name": "MMS", "title": "ระบบพิมพ์หลากสี (Multi-Material Systems - MMS)", "subtitle": "อุปกรณ์เสริมสำหรับโหลดและสลับเส้นพลาสติกอัตโนมัติ (Bambu AMS, ERCF, Mosaic Palette, CFS, ACE Pro ฯลฯ)", "icon": "palette", "category": "อุปกรณ์เสริม", "accent": "pink", "filter_cols": ["Seller", "Filament Cutting", "Open Source"], "primary_cols": ["Seller", "Name", "Max Filament/Unit", "Max Unit", "Filament Cutting", "Open Source", "Estimated Price (THB)"]}, {"slug": "filament-dryer", "name": "Filament Dryer", "title": "กล่องและตู้อบเส้นพลาสติก (Filament Dryers)", "subtitle": "เปรียบเทียบกล่องอบไล่ความชื้นเส้น Filament ความจุม้วน 1KG-3KG อุณหภูมิสูงสุด กำลังไฟ และฟีเจอร์เสริม", "icon": "sun", "category": "อุปกรณ์เสริม", "accent": "orange", "filter_cols": ["Manufacturer", "1KG Spool Support", "2KG Spool Support", "Max Temp (°C)"], "primary_cols": ["Manufacturer", "Series", "1KG Spool Support", "2KG Spool Support", "Min Temp (°C)", "Max Temp (°C)", "Max Dryer Time (Hr)", "Rated Power (W)", "Features", "Estimated price (THB)"]}, {"slug": "filament-material", "name": "Filament Material", "title": "ฐานข้อมูลเส้นพลาสติก (Filament Materials Catalog)", "subtitle": "รวบรวมเส้นพลาสติกกว่า 430 รายการจากหลากหลายแบรนด์ในตลาด ทั้งอุณหภูมิแนะนำ ความแข็งแรง และราคาต่อกิโลกรัม", "icon": "disc", "category": "วัสดุ", "accent": "violet", "filter_cols": ["Manufacturer", "Materials Type", "Spool Type"], "primary_cols": ["Manufacturer", "Series", "Materials Type", "Number of Color", "Recommand Nozzle Temp (°C)", "Recommand Bed Temp  (°C)", "Tensile Strength, Break (MPa)", "Heat Deflection Temp (°C)", "Estimated price (THB)", "Price per KG (THB)"]}, {"slug": "filament-properties", "name": "Filament Properties", "title": "คุณสมบัติทางวิศวกรรมของเส้นพลาสติก (Filament Properties)", "subtitle": "ตารางเปรียบเทียบคุณสมบัติเชิงกลและอุณหภูมิของพลาสติก 61 ชนิด (Tg, Melting Temp, HDT, Tensile Strength, ความยากในการพิมพ์)", "icon": "activity", "category": "วัสดุ", "accent": "rose", "filter_cols": ["Print Difficulty", "UV Resistance", "Chemical Resistance"], "primary_cols": ["Material", "Name", "Glass Transition Temp (°C)", "Melting Temp (°C)", "Heat Deflection Temp (°C)", "Tensile Strength (MPa)", "Impact Strength (kJ/m²)", "UV Resistance", "Print Difficulty", "Nozzle Temp (°C)", "Bed Temp (°C)"]}, {"slug": "resin-printers", "name": "Resin 3D Printer", "title": "เครื่องพิมพ์เรซิน (Resin 3D Printers - MSLA/SLA/DLP)", "subtitle": "เปรียบเทียบเครื่องพิมพ์เรซิน 125 รุ่น ความละเอียดหน้าจอ 4K-16K, ขนาดพิกเซล XY Resolution (µm) และพื้นที่การพิมพ์", "icon": "droplet", "category": "เครื่องพิมพ์", "accent": "purple", "filter_cols": ["Seller", "Technology Type", "LCD Resolution"], "primary_cols": ["Seller", "Printer", "Technology Type", "Build Length (mm)", "Build Width (mm)", "Build Height (mm)", "LCD Screen", "LCD Resolution", "XY Resolution (µm)", "Current Price (THB)", "Release Date"]}, {"slug": "powder-printers", "name": "Powder 3D Printer", "title": "เครื่องพิมพ์ระบบผงเลเซอร์ (Powder 3D Printers - SLS/SLM)", "subtitle": "เครื่องพิมพ์อุตสาหกรรมและตั้งโต๊ะระบบหลอมผงด้วยเลเซอร์ (SLS / Direct Metal Laser Sintering)", "icon": "sparkles", "category": "เครื่องพิมพ์", "accent": "sky", "filter_cols": ["Seller", "Technology Type", "Laser Type"], "primary_cols": ["Seller", "Printer", "Technology Type", "Build Length (mm)", "Build Width (mm)", "Build Height (mm)", "Laser Type", "Laser Power (W)", "Supported Materials", "EST Price (THB)", "Release Year"]}, {"slug": "resin-material", "name": "Resin Material", "title": "ฐานข้อมูลน้ำยาเรซิน (Resin Materials - 1,020 รายการ)", "subtitle": "คลังข้อมูลน้ำยาเรซินสำหรับเครื่องพิมพ์ SLA/MSLA/DLP ครอบคลุมทุกแบรนด์ สี สเปกทางเทคนิค และราคาเปรียบเทียบ", "icon": "flask-conical", "category": "วัสดุ", "accent": "fuchsia", "filter_cols": ["Manufacturer", "weight (g)", "is verified"], "primary_cols": ["Manufacturer", "Series", "Number of Color", "Color", "Technical Spec", "weight (g)", "Estimated price (THB)", "Price per KG (THB)"]}, {"slug": "useful-links", "name": "Useful Link", "title": "รวมลิงก์และเครื่องมือที่มีประโยชน์ (Useful Links & Resources)", "subtitle": "แหล่งรวมเว็บไซต์ โปรแกรม Slicer, คู่มือตั้งค่า Calibration, ชุมชน 3D Printing และแหล่งดาวน์โหลดโมเดล 3 มิติ", "icon": "link", "category": "อื่น ๆ", "accent": "teal", "filter_cols": ["Category"], "primary_cols": ["Category", "Source Name", "Description", "URL"]}, {"slug": "contact", "name": "Contact", "title": "ติดต่อผู้จัดทำและชุมชน (Contact & Community)", "subtitle": "ช่องทางติดต่อผู้รวบรวมข้อมูล 3D Printer Thailand Master List และการมีส่วนร่วมอัปเดตข้อมูล", "icon": "mail", "category": "อื่น ๆ", "accent": "cyan", "filter_cols": [], "primary_cols": ["Email", "blazelabshop@gmail.com"]}]</script>
+  <script src="../assets/common.js"></script>
+  <script>
+    renderWikiHeader('overview', false);
+    const data = JSON.parse(document.getElementById('tab-data').textContent).data || [];
+    const tabsMeta = JSON.parse(document.getElementById('tabs-meta').textContent);
+    const tbody = document.getElementById('overview-tbody');
+    const currList = document.getElementById('currency-list');
+
+    const sheetRows = [];
+    const currencies = [];
+
+    data.forEach(r => {
+      const sName = r['3D Printer Master List'] || '';
+      const desc = r['Compiled By Terasit J.'] || '';
+      const curr = r['Currency'] || '';
+      const val = r['Value'] || '';
+      if (curr && val && curr !== 'Currency') currencies.push({ curr, val });
+      if (sName && sName !== 'Sheets') sheetRows.push({ sName, desc });
+    });
+
+    tbody.innerHTML = tabsMeta.filter(t => t.slug !== 'overview').map(t => {
+      const found = sheetRows.find(s => s.sName.toLowerCase() === t.name.toLowerCase());
+      const desc = found ? found.desc : t.subtitle;
+      return `
+        <tr class="hover:bg-slate-800/40 transition">
+          <td class="px-4 py-3.5 font-semibold text-white whitespace-nowrap">${t.name}</td>
+          <td class="px-4 py-3.5 text-slate-300 text-xs sm:text-sm">${desc}</td>
+          <td class="px-4 py-3.5 text-right whitespace-nowrap">
+            <a href="./${t.slug}.html" class="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 text-xs font-medium transition">
+              เปิดดู <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </a>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    currList.innerHTML = currencies.map(c => `
+      <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+        <span class="font-mono font-semibold text-amber-300">1 ${c.curr}</span>
+        <span class="font-bold text-white">${c.val} THB</span>
+      </div>
+    `).join('');
+
+    if (window.lucide) window.lucide.createIcons();
+  </script>
+</body>
+</html>

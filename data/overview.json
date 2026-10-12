@@ -1,0 +1,116 @@
+{
+  "name": "Sheets",
+  "slug": "overview",
+  "title": "ภาพรวมและสารบัญชีต",
+  "headers": [
+    "3D Printer Master List",
+    "Compiled By Terasit J."
+  ],
+  "total_rows": 26,
+  "data": [
+    {
+      "3D Printer Master List": "Sheets",
+      "Compiled By Terasit J.": "Description"
+    },
+    {
+      "3D Printer Master List": "FDM/FFF 3D Printer",
+      "Compiled By Terasit J.": "List of Material Extrude 3D Printer"
+    },
+    {
+      "3D Printer Master List": "DIY 3D Printer",
+      "Compiled By Terasit J.": "List of Custom 3D Printer"
+    },
+    {
+      "3D Printer Master List": "Boards",
+      "Compiled By Terasit J.": "List of Custom 3D Printer And CNC Electronics"
+    },
+    {
+      "3D Printer Master List": "StepDriver",
+      "Compiled By Terasit J.": "List of Stepper Motor Driver"
+    },
+    {
+      "3D Printer Master List": "MMS",
+      "Compiled By Terasit J.": "List of MMS (Multi-Materials System)"
+    },
+    {
+      "3D Printer Master List": "Resin 3D Printer",
+      "Compiled By Terasit J.": "List of all Resin 3D Printer (SLA , DLP )"
+    },
+    {
+      "3D Printer Master List": "Powder 3D Printer",
+      "Compiled By Terasit J.": "List of SLS,SLM,MJF 3D Printer"
+    },
+    {
+      "3D Printer Master List": "Filament",
+      "Compiled By Terasit J.": "List of popular Filament in Thailand"
+    },
+    {
+      "3D Printer Master List": "Filament Material Properties",
+      "Compiled By Terasit J.": "List of popular Filament in Thailand"
+    },
+    {
+      "3D Printer Master List": "Filament Dryer",
+      "Compiled By Terasit J.": "List of Filament Dryer"
+    },
+    {
+      "3D Printer Master List": "Resin",
+      "Compiled By Terasit J.": "List of popular Resin in Thailand"
+    },
+    {
+      "3D Printer Master List": "Useful Link",
+      "Compiled By Terasit J.": "List of useful link about 3d printing."
+    },
+    {
+      "3D Printer Master List": "Discord",
+      "Compiled By Terasit J.": "Join the Discord server now to get the latest updates on this spreadsheet."
+    },
+    {
+      "3D Printer Master List": "Contact",
+      "Compiled By Terasit J.": "Creator Contact."
+    },
+    {
+      "3D Printer Master List": "Please feel free to add any comments or suggestions for new filaments/printers or mistakes in the spreadsheet",
+      "Compiled By Terasit J.": ""
+    },
+    {
+      "3D Printer Master List": "ถ้าต้องการแนะนำ Filament หรือ 3DPrinter รุ่นอื่น ๆ หรือ พบเจอข้อผิดพลาดในชีตนี้ สามารถ Comment มาได้เลยครับ",
+      "Compiled By Terasit J.": ""
+    },
+    {
+      "3D Printer Master List": "If you would like to support me:           https://tipme.in.th/icezaza",
+      "Compiled By Terasit J.": ""
+    },
+    {
+      "3D Printer Master List": "Other links, spreadsheets and websites (credit to the owners of these links, sheets and websites):",
+      "Compiled By Terasit J.": ""
+    },
+    {
+      "3D Printer Master List": "Bambu Spool List",
+      "Compiled By Terasit J.": "List of BambuLab Compatible Filament Spool"
+    },
+    {
+      "3D Printer Master List": "Creality K1 Master",
+      "Compiled By Terasit J.": "List of Creality K1 Parts and Upgrade"
+    },
+    {
+      "3D Printer Master List": "Bambu Lab GTIN Tracker",
+      "Compiled By Terasit J.": "Global Trade Item Number of BambuLab Parts"
+    },
+    {
+      "3D Printer Master List": "Bambu Studio Presets",
+      "Compiled By Terasit J.": "H2D Presets"
+    },
+    {
+      "3D Printer Master List": "Bambu X1/P1/A1 Purge Values",
+      "Compiled By Terasit J.": "Purge Values for MultiColor Print"
+    },
+    {
+      "3D Printer Master List": "Filaments 3-pagers",
+      "Compiled By Terasit J.": "BambuLab Filament in 3 pages"
+    },
+    {
+      "3D Printer Master List": "Print-Tuing-Guide",
+      "Compiled By Terasit J.": "Printer Tuning Guide"
+    }
+  ]
+}
